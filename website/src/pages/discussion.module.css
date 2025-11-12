@@ -1,0 +1,232 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--jiuwen-border-radius);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--jiuwen-transition);
+  box-shadow: var(--jiuwen-shadow-sm);
+}
+
+.input:hover,
+.select:hover,
+.textarea:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--jiuwen-shadow-md);
+  transform: translateY(-2px);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), var(--jiuwen-shadow-md);
+}
+
+.textarea {
+  resize: vertical;
+  font-family: var(--ifm-font-family-base);
+}
+
+.select {
+  cursor: pointer;
+}
+
+.formActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 996px) {
+  .formActions {
+    flex-direction: column;
+  }
+
+  .formActions .button {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+}
+
+/* 列表页样式 */
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+}
+
+.filterSelect {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.questionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.questionItem {
+  display: block;
+  padding: 1.5rem;
+  border: 2px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--jiuwen-border-radius);
+  transition: var(--jiuwen-transition);
+  text-decoration: none;
+  color: inherit;
+  background: var(--ifm-background-color);
+  box-shadow: var(--jiuwen-shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.questionItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--jiuwen-gradient-primary);
+  transform: scaleY(0);
+  transition: var(--jiuwen-transition);
+}
+
+.questionItem:hover::before {
+  transform: scaleY(1);
+}
+
+.questionItem:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--jiuwen-shadow-md);
+  transform: translateY(-4px) translateX(4px);
+  text-decoration: none;
+  color: inherit;
+}
+
+.questionHeader {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.categoryBadge,
+.statusBadge {
+  font-size: 0.75rem;
+}
+
+.questionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  color: var(--ifm-heading-color);
+}
+
+.questionMeta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-top: 0.5rem;
+}
+
+/* 详情页样式 */
+.detailHeader {
+  margin-bottom: 1rem;
+}
+
+.detailTitle {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.questionContent {
+  margin-top: 1rem;
+}
+
+.contentText {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: var(--ifm-font-family-base);
+  line-height: 1.6;
+  color: var(--ifm-font-color-base);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  padding: 1.5rem;
+  border-radius: var(--jiuwen-border-radius);
+  border: 2px solid var(--ifm-color-emphasis-200);
+  box-shadow: var(--jiuwen-shadow-sm);
+  transition: var(--jiuwen-transition);
+}
+
+.contentText:hover {
+  box-shadow: var(--jiuwen-shadow-md);
+  border-color: var(--ifm-color-primary);
+}
+
+.replyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.replyContent {
+  margin: 0;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+@media (max-width: 996px) {
+  .listHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filterBar {
+    flex-direction: column;
+  }
+
+  .questionMeta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+

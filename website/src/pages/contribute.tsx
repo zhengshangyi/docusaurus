@@ -10,6 +10,7 @@ import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
 import Translate from '@docusaurus/Translate';
+import Breadcrumbs from '@site/src/components/Breadcrumbs';
 
 export default function Contribute(): ReactNode {
   return (
@@ -17,6 +18,7 @@ export default function Contribute(): ReactNode {
       title="贡献"
       description="了解如何为九问平台做出贡献">
       <main className="container margin-vert--lg">
+        <Breadcrumbs items={[{label: '贡献'}]} />
         <Heading as="h1">
           <Translate>贡献指南</Translate>
         </Heading>
@@ -31,7 +33,7 @@ export default function Contribute(): ReactNode {
 
         <div className="margin-top--xl">
           <div className="row">
-            <div className="col col--6">
+            <div className="col col--4">
               <div className="card margin-bottom--md">
                 <div className="card__header">
                   <h3>💻 <Translate>代码贡献</Translate></h3>
@@ -48,24 +50,7 @@ export default function Contribute(): ReactNode {
                 </div>
               </div>
             </div>
-            <div className="col col--6">
-              <div className="card margin-bottom--md">
-                <div className="card__header">
-                  <h3>📝 <Translate>文档贡献</Translate></h3>
-                </div>
-                <div className="card__body">
-                  <p>
-                    <Translate>
-                      改进文档、添加示例、修复错误或翻译内容。文档是项目的重要组成部分。
-                    </Translate>
-                  </p>
-                  <Link className="button button--primary" to="/docs">
-                    <Translate>查看文档</Translate>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col col--6">
+            <div className="col col--4">
               <div className="card margin-bottom--md">
                 <div className="card__header">
                   <h3>🐛 <Translate>报告问题</Translate></h3>
@@ -82,7 +67,7 @@ export default function Contribute(): ReactNode {
                 </div>
               </div>
             </div>
-            <div className="col col--6">
+            <div className="col col--4">
               <div className="card margin-bottom--md">
                 <div className="card__header">
                   <h3>💬 <Translate>社区支持</Translate></h3>

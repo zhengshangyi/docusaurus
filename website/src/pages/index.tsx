@@ -18,7 +18,6 @@ import Layout from '@theme/Layout';
 
 import Tweet from '@site/src/components/Tweet';
 import Tweets, {type TweetItem} from '@site/src/data/tweets';
-import Quotes from '@site/src/data/quotes';
 import Features, {type FeatureItem} from '@site/src/data/features';
 import Heading from '@theme/Heading';
 
@@ -52,7 +51,7 @@ function HeroBanner() {
           />
         </Heading>
         <div className={clsx(styles.indexCtas, 'jiuwen-hero-buttons')}>
-          <Link className="button button--primary button--lg jiuwen-btn-primary" to="/docs">
+          <Link className="button button--primary button--lg jiuwen-btn-primary" to="/docs-page">
             <Translate>开始使用</Translate>
           </Link>
           <Link className="button button--outline button--lg jiuwen-btn-outline" to="/news">
@@ -85,7 +84,7 @@ function ProjectIntroSection() {
                 </Translate>
               </p>
               <div className="margin-top--lg">
-                <Link className="button button--primary" to="/docs">
+                <Link className="button button--primary" to="/docs-page">
                   <Translate>查看文档</Translate>
                 </Link>
                 <Link className="button button--secondary margin-left--sm" to="/community">
@@ -144,7 +143,7 @@ function NewsSection() {
                   </div>
                   <div className="card__body">
                     <p><Translate>阅读最新的技术文章和最佳实践...</Translate></p>
-                    <Link to="/blog" className="button button--link">
+                    <Link to="/blog-page" className="button button--link">
                       <Translate>阅读更多 →</Translate>
                     </Link>
                   </div>
@@ -163,35 +162,6 @@ function NewsSection() {
   );
 }
 
-function QuotesSection() {
-  return (
-    <div className={clsx(styles.section)}>
-      <div className="container">
-        <div className="row">
-          {Quotes.map((quote) => (
-            <div className="col" key={quote.name}>
-              <div className="avatar avatar--vertical margin-bottom--sm">
-                <Image
-                  alt={quote.name}
-                  className="avatar__photo avatar__photo--xl"
-                  img={quote.thumbnail}
-                  style={{overflow: 'hidden'}}
-                />
-                <div className="avatar__intro padding-top--sm">
-                  <div className="avatar__name">{quote.name}</div>
-                  <small className="avatar__subtitle">{quote.title}</small>
-                </div>
-              </div>
-              <p className="text--center text--italic padding-horiz--md">
-                {quote.text}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function VideoContainer() {
   return (
@@ -336,7 +306,6 @@ export default function Home(): ReactNode {
           <FeaturesContainer />
         </div>
         <NewsSection />
-        <QuotesSection />
       </main>
     </Layout>
   );

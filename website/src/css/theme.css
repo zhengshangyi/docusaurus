@@ -1,0 +1,303 @@
+/**
+ * 统一的主题样式 - 简洁炫酷风格
+ */
+
+/* 全局变量定义 */
+:root {
+  --jiuwen-gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --jiuwen-gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --jiuwen-gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --jiuwen-gradient-dark: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
+  
+  /* 主页标题颜色变量 */
+  --jiuwen-hero-title-color: #ffffff;
+  --jiuwen-hero-title-accent-color: #25c2a0;
+  
+  --jiuwen-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --jiuwen-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --jiuwen-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+  --jiuwen-shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
+  
+  --jiuwen-border-radius: 12px;
+  --jiuwen-border-radius-lg: 16px;
+  --jiuwen-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html[data-theme='dark'] {
+  --jiuwen-gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --jiuwen-gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --jiuwen-gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  
+  /* 主页标题颜色变量 - 暗色主题也保持白色和绿色 */
+  --jiuwen-hero-title-color: #ffffff;
+  --jiuwen-hero-title-accent-color: #25c2a0;
+  
+  --jiuwen-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --jiuwen-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --jiuwen-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --jiuwen-shadow-glow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+/* 卡片样式增强 */
+.card {
+  border-radius: var(--jiuwen-border-radius);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: var(--jiuwen-shadow-sm);
+  transition: var(--jiuwen-transition);
+  overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--jiuwen-gradient-primary);
+  opacity: 0;
+  transition: var(--jiuwen-transition);
+}
+
+.card:hover {
+  box-shadow: var(--jiuwen-shadow-md);
+  transform: translateY(-2px);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card__header {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* 按钮样式增强 */
+.button {
+  border-radius: var(--jiuwen-border-radius);
+  transition: var(--jiuwen-transition);
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.button--primary {
+  background: var(--jiuwen-gradient-primary);
+  border: none;
+  box-shadow: var(--jiuwen-shadow-sm);
+}
+
+.button--primary:hover {
+  box-shadow: var(--jiuwen-shadow-md), var(--jiuwen-shadow-glow);
+  transform: translateY(-2px);
+}
+
+.button--outline {
+  border: 2px solid;
+  background: transparent;
+  position: relative;
+}
+
+.button--outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--jiuwen-gradient-primary);
+  transition: var(--jiuwen-transition);
+  z-index: -1;
+}
+
+.button--outline:hover::before {
+  left: 0;
+}
+
+.button--outline:hover {
+  border-color: transparent;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* 输入框样式增强 */
+.input,
+.select,
+.textarea {
+  border-radius: var(--jiuwen-border-radius);
+  border: 2px solid var(--ifm-color-emphasis-300);
+  transition: var(--jiuwen-transition);
+  background: var(--ifm-background-color);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), var(--jiuwen-shadow-sm);
+  outline: none;
+}
+
+/* 页面容器样式 */
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.page-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 标题样式增强 */
+h1, h2, h3 {
+  background: var(--jiuwen-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* 排除主页标题，完全不使用渐变，使用纯色 */
+.heroProjectTagline,
+.heroProjectTagline h1,
+.heroProjectTagline *,
+.heroTitleTextHtml,
+.heroTitleTextHtml * {
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+}
+
+.heroProjectTagline,
+.heroProjectTagline h1,
+.heroTitleTextHtml {
+  color: var(--jiuwen-hero-title-color) !important;
+}
+
+html[data-theme='dark'] h1,
+html[data-theme='dark'] h2,
+html[data-theme='dark'] h3 {
+  background: var(--jiuwen-gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html[data-theme='dark'] .heroProjectTagline,
+html[data-theme='dark'] .heroProjectTagline h1,
+html[data-theme='dark'] .heroProjectTagline *,
+html[data-theme='dark'] .heroTitleTextHtml,
+html[data-theme='dark'] .heroTitleTextHtml * {
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+}
+
+html[data-theme='dark'] .heroProjectTagline,
+html[data-theme='dark'] .heroProjectTagline h1,
+html[data-theme='dark'] .heroTitleTextHtml {
+  color: var(--jiuwen-hero-title-color) !important;
+}
+
+/* 徽章样式增强 */
+.badge {
+  border-radius: 6px;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  transition: var(--jiuwen-transition);
+}
+
+.badge:hover {
+  transform: scale(1.05);
+  box-shadow: var(--jiuwen-shadow-sm);
+}
+
+/* 表格样式增强 */
+.table {
+  border-radius: var(--jiuwen-border-radius);
+  overflow: hidden;
+  box-shadow: var(--jiuwen-shadow-sm);
+}
+
+.table thead {
+  background: var(--jiuwen-gradient-primary);
+  color: white;
+}
+
+.table tbody tr {
+  transition: var(--jiuwen-transition);
+}
+
+.table tbody tr:hover {
+  background: var(--ifm-color-emphasis-100);
+  transform: scale(1.01);
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* 渐变背景卡片 */
+.gradient-card {
+  background: var(--jiuwen-gradient-primary);
+  color: white;
+  border: none;
+  box-shadow: var(--jiuwen-shadow-lg);
+}
+
+.gradient-card h2,
+.gradient-card h3 {
+  color: white;
+  -webkit-text-fill-color: white;
+}
+
+/* 响应式优化 */
+@media (max-width: 996px) {
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .button {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+

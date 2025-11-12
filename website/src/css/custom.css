@@ -6,6 +6,7 @@
  */
 
 @import url('react-medium-image-zoom/dist/styles.css');
+@import url('./theme.css');
 
 :root {
   /*

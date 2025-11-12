@@ -10,6 +10,7 @@ import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
 import Translate from '@docusaurus/Translate';
+import Breadcrumbs from '@site/src/components/Breadcrumbs';
 
 export default function News(): ReactNode {
   return (
@@ -17,6 +18,7 @@ export default function News(): ReactNode {
       title="新闻资讯"
       description="九问平台最新动态、版本更新、社区活动和技术博客">
       <main className="container margin-vert--lg">
+        <Breadcrumbs items={[{label: '新闻'}]} />
         <Heading as="h1">
           <Translate>新闻资讯</Translate>
         </Heading>
@@ -28,7 +30,7 @@ export default function News(): ReactNode {
             </Translate>
           </p>
           <div className="margin-top--lg">
-            <Link className="button button--primary" to="/blog">
+            <Link className="button button--primary" to="/blog-page">
               <Translate>查看技术博客</Translate>
             </Link>
             <Link className="button button--secondary margin-left--sm" to="/community">

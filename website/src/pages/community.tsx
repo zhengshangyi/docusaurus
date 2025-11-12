@@ -10,6 +10,7 @@ import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
 import Translate from '@docusaurus/Translate';
+import Breadcrumbs from '@site/src/components/Breadcrumbs';
 
 export default function Community(): ReactNode {
   return (
@@ -17,6 +18,7 @@ export default function Community(): ReactNode {
       title="社区"
       description="加入九问社区，参与讨论、分享经验、查看社区日历">
       <main className="container margin-vert--lg">
+        <Breadcrumbs items={[{label: '社区'}]} />
         <Heading as="h1">
           <Translate>九问社区</Translate>
         </Heading>
@@ -84,7 +86,7 @@ export default function Community(): ReactNode {
                 </div>
                 <div className="card__body">
                   <p><Translate>参与社区讨论，提问和回答问题</Translate></p>
-                  <Link className="button button--primary" to="/community/support">
+                  <Link className="button button--primary" to="/discussion-list">
                     <Translate>进入讨论区</Translate>
                   </Link>
                 </div>

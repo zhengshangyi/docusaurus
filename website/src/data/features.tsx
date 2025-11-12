@@ -21,89 +21,98 @@ export type FeatureItem = {
 const FEATURES: FeatureItem[] = [
   {
     title: translate({
-      message: 'Powered by MDX',
-      id: 'homepage.features.powered-by-mdx.title',
+      message: '极简开发',
+      id: 'homepage.features.simple-development.title',
     }),
     image: {
-      src: '/img/undraw_typewriter.svg',
+      src: '/img/undraw_workflow.svg',
       width: 1009.54,
       height: 717.96,
     },
     text: (
-      <Translate id="homepage.features.powered-by-mdx.text">
-        Save time and focus on text documents. Simply write docs and blog posts
-        with MDX, and JiuWen builds them into static HTML files ready to be
-        served. You can even embed React components in your Markdown thanks to
-        MDX.
+      <Translate
+        id="homepage.features.simple-development.text"
+        values={{
+          workflow: <strong>Workflow高效编排</strong>,
+          prompt: <strong>Prompt模板智能生成</strong>,
+          analysis: <strong>应用Top-down观测分析</strong>,
+        }}>
+        {'{workflow}、{prompt}、{analysis}，让开发更简单高效。'}
       </Translate>
     ),
   },
   {
     title: translate({
-      message: 'Built Using React',
-      id: 'homepage.features.built-using-react.title',
+      message: '高成功率',
+      id: 'homepage.features.high-success-rate.title',
     }),
     image: {
-      src: '/img/undraw_react.svg',
+      src: '/img/undraw_success.svg',
       width: 1108,
       height: 731.18,
     },
     text: (
-      <Translate id="homepage.features.built-using-react.text">
-        Extend and customize your project&apos;s layout by writing React
-        components. Leverage the pluggable architecture, and design your own
-        site while reusing the same data created by JiuWen plugins.
+      <Translate
+        id="homepage.features.high-success-rate.text"
+        values={{
+          fill: <strong>Prompt智能填充</strong>,
+          correct: <strong>插件调用参数修正</strong>,
+          mine: <strong>插件关系智能挖掘与层次检索</strong>,
+        }}>
+        {'{fill}、{correct}、{mine}，提升应用成功率。'}
       </Translate>
     ),
   },
   {
     title: translate({
-      message: 'Ready for Translations',
-      id: 'homepage.features.ready-for-translations.title',
+      message: '高性能',
+      id: 'homepage.features.high-performance.title',
     }),
     image: {
-      src: '/img/undraw_around_the_world.svg',
-      width: 1137,
-      height: 776.59,
-    },
-    text: (
-      <Translate id="homepage.features.ready-for-translations.text">
-        Localization comes out-of-the-box. Use git, Crowdin, or any other
-        translation manager to translate your docs and deploy them individually.
-      </Translate>
-    ),
-  },
-  {
-    title: translate({
-      message: 'Document Versioning',
-      id: 'homepage.features.document-versioning.title',
-    }),
-    image: {
-      src: '/img/undraw_version_control.svg',
+      src: '/img/undraw_performance.svg',
       width: 1038.23,
       height: 693.31,
     },
     text: (
-      <Translate id="homepage.features.document-versioning.text">
-        Support users on all versions of your project. Document versioning helps
-        you keep documentation in sync with project releases.
+      <Translate
+        id="homepage.features.high-performance.text"
+        values={{
+          engine: <strong>实时计算图引擎</strong>,
+          sandbox: <strong>高性能隔离执行沙箱</strong>,
+        }}>
+        {'{engine}、{sandbox}，确保应用运行流畅稳定。'}
       </Translate>
     ),
   },
   {
     title: translate({
-      message: 'Content Search',
-      id: 'homepage.features.content-search.title',
+      message: '活跃的社区',
+      id: 'homepage.features.active-community.title',
     }),
     image: {
-      src: '/img/undraw_algolia.svg',
+      src: '/img/undraw_community.svg',
       width: 1137.97,
       height: 736.21,
     },
     text: (
-      <Translate id="homepage.features.content-search.text">
-        Make it easy for your community to find what they need in your
-        documentation. We proudly support Algolia documentation search.
+      <Translate id="homepage.features.active-community.text">
+        活跃的开发者社区，提供技术支持、经验分享和最佳实践，帮助开发者共同成长。
+      </Translate>
+    ),
+  },
+  {
+    title: translate({
+      message: '安全可靠',
+      id: 'homepage.features.secure-reliable.title',
+    }),
+    image: {
+      src: '/img/undraw_security.svg',
+      width: 1137,
+      height: 776.59,
+    },
+    text: (
+      <Translate id="homepage.features.secure-reliable.text">
+        完善的安全机制和可靠性保障，确保应用和数据的安全稳定运行。
       </Translate>
     ),
   },

@@ -1,0 +1,137 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+.versionSelector {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: var(--jiuwen-border-radius);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: var(--jiuwen-shadow-sm);
+  transition: var(--jiuwen-transition);
+}
+
+.versionSelector:hover {
+  box-shadow: var(--jiuwen-shadow-md);
+  transform: translateY(-2px);
+}
+
+.select {
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--jiuwen-border-radius);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--jiuwen-transition);
+  box-shadow: var(--jiuwen-shadow-sm);
+}
+
+.select:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--jiuwen-shadow-md), var(--jiuwen-shadow-glow);
+  transform: translateY(-2px);
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), var(--jiuwen-shadow-md);
+}
+
+.docsActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.docsActions .button {
+  border-radius: var(--jiuwen-border-radius);
+  transition: var(--jiuwen-transition);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+}
+
+.docsActions .button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--jiuwen-shadow-md);
+}
+
+.docsActions .button--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.versionInfo {
+  padding-top: 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.wikiContent {
+  margin-top: 1.5rem;
+}
+
+.wikiSection {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: var(--jiuwen-border-radius);
+  border-left: 4px solid;
+  border-image: var(--jiuwen-gradient-primary) 1;
+  box-shadow: var(--jiuwen-shadow-sm);
+  transition: var(--jiuwen-transition);
+}
+
+.wikiSection:hover {
+  box-shadow: var(--jiuwen-shadow-md);
+  transform: translateX(4px);
+}
+
+.wikiPlaceholder {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.02) 0%, rgba(118, 75, 162, 0.02) 100%);
+  border: 2px dashed var(--ifm-color-emphasis-300);
+  border-radius: var(--jiuwen-border-radius);
+  text-align: center;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--jiuwen-transition);
+}
+
+.wikiPlaceholder:hover {
+  border-color: var(--ifm-color-primary);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  box-shadow: var(--jiuwen-shadow-sm);
+}
+
+@media (max-width: 996px) {
+  .versionSelector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .select {
+    width: 100%;
+  }
+
+  .docsActions {
+    flex-direction: column;
+  }
+
+  .docsActions .button {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+}
+

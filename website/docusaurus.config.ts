@@ -76,7 +76,7 @@ function getAnnouncedVersion() {
 
 // This probably only makes sense for the alpha/beta/rc phase, temporary
 function getNextVersionName() {
-  return 'Canary';
+  return 'Current';
   /*
   const expectedPrefix = '2.0.0-rc.';
 
@@ -693,21 +693,11 @@ export default async function createConfigAsync() {
           height: 32,
         },
         items: [
-          {
-            type: 'doc',
-            position: 'left',
-            docId: 'introduction',
-            label: '文档',
-          },
-          {to: 'blog', label: '博客', position: 'left'},
+          {to: '/docs-page', label: '文档', position: 'left'},
+          {to: '/blog-page', label: '博客', position: 'left'},
           {to: '/news', label: '新闻', position: 'left'},
           {to: '/community', label: '社区', position: 'left'},
           {to: '/contribute', label: '贡献', position: 'left'},
-          {
-            type: 'docsVersionDropdown',
-            position: 'left',
-            label: '版本',
-          },
           // This item links to a draft doc: only displayed in dev
           {
             type: 'doc',
@@ -722,7 +712,8 @@ export default async function createConfigAsync() {
             content: '😉',
           },
           // Right
-          {
+          // Version dropdown removed - no version selection in navbar
+          /* {
             type: 'docsVersionDropdown',
             position: 'right',
             dropdownActiveClassDisabled: true,
@@ -755,7 +746,7 @@ export default async function createConfigAsync() {
                 label: 'All versions',
               },
             ],
-          },
+          }, */
           {
             type: 'localeDropdown',
             position: 'right',
@@ -771,7 +762,7 @@ export default async function createConfigAsync() {
             ],
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/jiuwen',
             position: 'right',
             className: 'header-github-link',
             'aria-label': 'GitHub repository',
@@ -790,15 +781,15 @@ export default async function createConfigAsync() {
             items: [
               {
                 label: '文档',
-                to: 'docs',
+                to: '/docs-page',
               },
               {
                 label: '博客',
-                to: 'blog',
+                to: '/blog-page',
               },
               {
                 label: '版本下载',
-                to: '/versions',
+                to: '/versions-page',
               },
               {
                 label: '新闻动态',
