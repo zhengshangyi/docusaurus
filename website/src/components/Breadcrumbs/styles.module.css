@@ -8,10 +8,9 @@
 .breadcrumbs {
   margin-bottom: 1.5rem;
   padding: 0.75rem 1rem;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%);
+  background: var(--jiuwen-bg-secondary);
   border-radius: var(--jiuwen-border-radius);
-  border-left: 3px solid;
-  border-image: var(--jiuwen-gradient-primary) 1;
+  border-left: 3px solid var(--jiuwen-primary);
 }
 
 .breadcrumbList {
@@ -31,11 +30,12 @@
 
 .breadcrumbSeparator {
   margin: 0 0.5rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--jiuwen-text-tertiary);
+  font-weight: 400;
 }
 
 .breadcrumbLink {
-  color: var(--ifm-color-primary);
+  color: var(--jiuwen-primary);
   text-decoration: none;
   transition: var(--jiuwen-transition);
   font-weight: 500;
@@ -44,20 +44,16 @@
 }
 
 .breadcrumbLink:hover {
-  background: var(--jiuwen-gradient-primary);
+  background: var(--jiuwen-primary);
   color: white;
-  -webkit-text-fill-color: white;
   text-decoration: none;
   transform: translateX(2px);
 }
 
 .breadcrumbCurrent {
-  color: var(--ifm-color-emphasis-700);
+  color: var(--jiuwen-text-primary);
   font-weight: 600;
-  background: var(--jiuwen-gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  padding: 0.25rem 0.5rem;
 }
 
 @media (max-width: 996px) {

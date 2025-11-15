@@ -24,22 +24,28 @@ export default function Community(): ReactNode {
         </Heading>
         
         <div className="margin-top--lg">
-          <Heading as="h2">
-            <Translate>社区介绍</Translate>
-          </Heading>
-          <p className="text--lg">
-            <Translate>
-              九问社区是一个活跃的开发者社区，致力于大模型应用开发的交流与分享。
-              在这里，你可以：
-            </Translate>
-          </p>
-          <ul>
-            <li><Translate>与其他开发者交流经验和最佳实践</Translate></li>
-            <li><Translate>获取最新的技术资讯和平台更新</Translate></li>
-            <li><Translate>参与社区活动和线上/线下会议</Translate></li>
-            <li><Translate>贡献代码、文档和示例</Translate></li>
-            <li><Translate>获得技术支持和帮助</Translate></li>
-          </ul>
+          <div className="card">
+            <div className="card__header">
+              <Heading as="h2" className="margin-bottom--none">
+                <Translate>社区介绍</Translate>
+              </Heading>
+            </div>
+            <div className="card__body">
+              <p className="text--lg margin-bottom--md">
+                <Translate>
+                  九问社区是一个活跃的开发者社区，致力于大模型应用开发的交流与分享。
+                  在这里，你可以：
+                </Translate>
+              </p>
+              <ul className="margin-bottom--none">
+                <li><Translate>与其他开发者交流经验和最佳实践</Translate></li>
+                <li><Translate>获取最新的技术资讯和平台更新</Translate></li>
+                <li><Translate>参与社区活动和线上/线下会议</Translate></li>
+                <li><Translate>贡献代码、文档和示例</Translate></li>
+                <li><Translate>获得技术支持和帮助</Translate></li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         <div className="margin-top--xl">

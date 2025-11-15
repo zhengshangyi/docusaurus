@@ -26,15 +26,15 @@ import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 function HeroBanner() {
   return (
-    <div className={styles.hero} data-theme="dark">
+    <div className={styles.hero}>
       <div className={styles.heroInner}>
         <Heading as="h1" className={styles.heroProjectTagline}>
           <img
-            alt={translate({message: 'JiuWen Logo'})}
+            alt={translate({message: 'Jiuwen Logo'})}
             className={styles.heroLogo}
             src={useBaseUrl('/img/jiuwen-logo.svg')}
-            width="200"
-            height="200"
+            width="160"
+            height="160"
           />
           <span
             className={styles.heroTitleTextHtml}
@@ -43,13 +43,18 @@ function HeroBanner() {
               __html: translate({
                 id: 'homepage.hero.title',
                 message:
-                  '打造业界领先的Agent开发平台 <b>九问</b>',
+                  '下一代AI智能体开发平台 <b>九问</b>',
                 description:
                   'Home page hero title, can contain simple html tags',
               }),
             }}
           />
         </Heading>
+        <p className={styles.heroSubtitle}>
+          <Translate>
+            为开发者提供强大、易用、高效的AI应用开发工具和解决方案
+          </Translate>
+        </p>
         <div className={clsx(styles.indexCtas, 'jiuwen-hero-buttons')}>
           <Link className="button button--primary button--lg jiuwen-btn-primary" to="/docs-page">
             <Translate>开始使用</Translate>
@@ -66,28 +71,28 @@ function HeroBanner() {
   );
 }
 
-// 项目介绍区块
+// 项目介绍区块 - 简洁风格
 function ProjectIntroSection() {
   return (
     <div className={clsx(styles.section, 'jiuwen-intro-section')}>
       <div className="container">
         <div className="row">
-          <div className="col col--8 col--offset-2">
+          <div className="col col--10 col--offset-1">
             <Heading as="h2" className={clsx('margin-bottom--lg', 'text--center')}>
               <Translate>关于九问</Translate>
             </Heading>
             <div className="text--center padding-horiz--md">
-              <p className="text--lg">
+              <p className={styles.introText}>
                 <Translate>
-                  九问（JiuWen）致力于打造业界领先的大模型应用开发平台，为开发者提供强大、易用、高效的AI应用开发工具和解决方案。
+                  九问（Jiuwen）致力于打造下一代AI智能体开发平台，为开发者提供强大、易用、高效的AI应用开发工具和解决方案。
                   我们提供完整的开发框架、丰富的API接口、完善的文档和活跃的社区支持，帮助开发者快速构建和部署大模型应用。
                 </Translate>
               </p>
-              <div className="margin-top--lg">
-                <Link className="button button--primary" to="/docs-page">
+              <div className="margin-top--xl">
+                <Link className="button button--primary button--lg" to="/docs-page">
                   <Translate>查看文档</Translate>
                 </Link>
-                <Link className="button button--secondary margin-left--sm" to="/community">
+                <Link className="button button--secondary button--lg margin-left--sm" to="/community">
                   <Translate>加入社区</Translate>
                 </Link>
               </div>
@@ -175,7 +180,7 @@ function VideoContainer() {
             <LiteYouTubeEmbed
               id="_An9EsKPhp0"
               params="autoplay=1&autohide=1&showinfo=0&rel=0"
-              title="Explain Like I'm 5: JiuWen"
+              title="Explain Like I'm 5: Jiuwen"
               poster="maxresdefault"
               webp
             />
@@ -219,6 +224,9 @@ function FeaturesContainer() {
 
   return (
     <div className="container text--center">
+      <Heading as="h2" className={clsx('margin-bottom--xl', 'text--center')}>
+        <Translate>为什么选择九问</Translate>
+      </Heading>
       <div className="row margin-top--lg margin-bottom--lg">
         {firstRow.map((feature, idx) => (
           <Feature feature={feature} key={idx} />
@@ -253,7 +261,7 @@ function TopBanner() {
           <Translate
             id="homepage.banner.launch.newVersion"
             values={{newVersion: announcedVersion}}>
-            {'JiuWen\xa0{newVersion} is\xa0out!️'}
+            {'Jiuwen\xa0{newVersion} is\xa0out!️'}
           </Translate>
         </Link>
         {'\xa0🥳'}

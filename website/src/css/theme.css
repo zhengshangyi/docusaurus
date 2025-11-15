@@ -1,218 +1,255 @@
 /**
- * 统一的主题样式 - 简洁炫酷风格
+ * 统一的主题样式 - 参考 Volcano 简洁专业风格
  */
 
-/* 全局变量定义 */
+/* 全局变量定义 - 简洁专业的配色方案 */
 :root {
-  --jiuwen-gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --jiuwen-gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --jiuwen-gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --jiuwen-gradient-dark: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
+  /* 主色调 - 使用更简洁的蓝色系 */
+  --jiuwen-primary: #1890ff;
+  --jiuwen-primary-hover: #40a9ff;
+  --jiuwen-primary-active: #096dd9;
+  
+  /* 辅助色 */
+  --jiuwen-success: #52c41a;
+  --jiuwen-warning: #faad14;
+  --jiuwen-error: #ff4d4f;
+  --jiuwen-info: #1890ff;
+  
+  /* 中性色 */
+  --jiuwen-text-primary: #262626;
+  --jiuwen-text-secondary: #595959;
+  --jiuwen-text-tertiary: #8c8c8c;
+  --jiuwen-border-color: #d9d9d9;
+  --jiuwen-bg-base: #ffffff;
+  --jiuwen-bg-secondary: #fafafa;
   
   /* 主页标题颜色变量 */
-  --jiuwen-hero-title-color: #ffffff;
-  --jiuwen-hero-title-accent-color: #25c2a0;
+  --jiuwen-hero-title-color: #262626;
+  --jiuwen-hero-title-accent-color: #1890ff;
   
+  /* 阴影 */
   --jiuwen-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --jiuwen-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-  --jiuwen-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
-  --jiuwen-shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
+  --jiuwen-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --jiuwen-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
   
-  --jiuwen-border-radius: 12px;
-  --jiuwen-border-radius-lg: 16px;
+  /* 圆角 */
+  --jiuwen-border-radius: 8px;
+  --jiuwen-border-radius-lg: 12px;
+  
+  /* 过渡动画 */
   --jiuwen-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html[data-theme='dark'] {
-  --jiuwen-gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --jiuwen-gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --jiuwen-gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  /* 主色调 */
+  --jiuwen-primary: #1890ff;
+  --jiuwen-primary-hover: #40a9ff;
+  --jiuwen-primary-active: #096dd9;
   
-  /* 主页标题颜色变量 - 暗色主题也保持白色和绿色 */
+  /* 辅助色 */
+  --jiuwen-success: #52c41a;
+  --jiuwen-warning: #faad14;
+  --jiuwen-error: #ff4d4f;
+  --jiuwen-info: #1890ff;
+  
+  /* 中性色 - 暗色主题 */
+  --jiuwen-text-primary: #ffffff;
+  --jiuwen-text-secondary: rgba(255, 255, 255, 0.85);
+  --jiuwen-text-tertiary: rgba(255, 255, 255, 0.65);
+  --jiuwen-border-color: #434343;
+  --jiuwen-bg-base: #141414;
+  --jiuwen-bg-secondary: #1f1f1f;
+  
+  /* 主页标题颜色变量 */
   --jiuwen-hero-title-color: #ffffff;
-  --jiuwen-hero-title-accent-color: #25c2a0;
+  --jiuwen-hero-title-accent-color: #1890ff;
   
+  /* 阴影 */
   --jiuwen-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --jiuwen-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --jiuwen-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --jiuwen-shadow-glow: 0 0 20px rgba(102, 126, 234, 0.5);
+  --jiuwen-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --jiuwen-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
-/* 卡片样式增强 */
+/* 卡片样式 - 简洁专业风格 */
 .card {
-  border-radius: var(--jiuwen-border-radius);
-  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--jiuwen-border-radius-lg);
+  border: 1px solid var(--jiuwen-border-color);
   box-shadow: var(--jiuwen-shadow-sm);
   transition: var(--jiuwen-transition);
   overflow: hidden;
-  position: relative;
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--jiuwen-gradient-primary);
-  opacity: 0;
-  transition: var(--jiuwen-transition);
+  background: var(--jiuwen-bg-base);
 }
 
 .card:hover {
   box-shadow: var(--jiuwen-shadow-md);
-  transform: translateY(-2px);
-}
-
-.card:hover::before {
-  opacity: 1;
+  border-color: var(--jiuwen-primary);
+  transform: translateY(-4px);
 }
 
 .card__header {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--jiuwen-bg-secondary);
+  border-bottom: 1px solid var(--jiuwen-border-color);
+  padding: 1.5rem;
 }
 
-/* 按钮样式增强 */
+.card__body {
+  padding: 1.5rem;
+}
+
+/* 按钮样式 - 统一蓝色主题 */
 .button {
   border-radius: var(--jiuwen-border-radius);
   transition: var(--jiuwen-transition);
   font-weight: 500;
-  position: relative;
-  overflow: hidden;
+  border: 1px solid transparent;
 }
 
 .button--primary {
-  background: var(--jiuwen-gradient-primary);
-  border: none;
+  background: var(--jiuwen-primary);
+  border-color: var(--jiuwen-primary);
+  color: #ffffff;
   box-shadow: var(--jiuwen-shadow-sm);
 }
 
 .button--primary:hover {
-  box-shadow: var(--jiuwen-shadow-md), var(--jiuwen-shadow-glow);
+  background: var(--jiuwen-primary-hover);
+  border-color: var(--jiuwen-primary-hover);
+  box-shadow: var(--jiuwen-shadow-md);
   transform: translateY(-2px);
+}
+
+.button--primary:active {
+  background: var(--jiuwen-primary-active);
+  border-color: var(--jiuwen-primary-active);
 }
 
 .button--outline {
-  border: 2px solid;
+  border: 1px solid var(--jiuwen-primary);
   background: transparent;
-  position: relative;
-}
-
-.button--outline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--jiuwen-gradient-primary);
-  transition: var(--jiuwen-transition);
-  z-index: -1;
-}
-
-.button--outline:hover::before {
-  left: 0;
+  color: var(--jiuwen-primary);
 }
 
 .button--outline:hover {
-  border-color: transparent;
-  color: white;
+  background: var(--jiuwen-primary);
+  color: #ffffff;
+  border-color: var(--jiuwen-primary);
   transform: translateY(-2px);
+  box-shadow: var(--jiuwen-shadow-sm);
 }
 
-/* 输入框样式增强 */
+.button--secondary {
+  background: rgba(24, 144, 255, 0.1);
+  border: 1px solid var(--jiuwen-primary);
+  color: var(--jiuwen-primary);
+}
+
+.button--secondary:hover {
+  background: var(--jiuwen-primary);
+  color: #ffffff;
+  border-color: var(--jiuwen-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--jiuwen-shadow-sm);
+}
+
+html[data-theme='dark'] .button--secondary {
+  background: rgba(24, 144, 255, 0.15);
+}
+
+.button--link {
+  color: var(--jiuwen-primary);
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  padding: 0;
+}
+
+.button--link:hover {
+  color: var(--jiuwen-primary-hover);
+  text-decoration: underline;
+  background: transparent;
+}
+
+/* 输入框样式 - 简洁风格 */
 .input,
 .select,
 .textarea {
   border-radius: var(--jiuwen-border-radius);
-  border: 2px solid var(--ifm-color-emphasis-300);
+  border: 1px solid var(--jiuwen-border-color);
   transition: var(--jiuwen-transition);
-  background: var(--ifm-background-color);
+  background: var(--jiuwen-bg-base);
+  color: var(--jiuwen-text-primary);
 }
 
 .input:focus,
 .select:focus,
 .textarea:focus {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), var(--jiuwen-shadow-sm);
+  border-color: var(--jiuwen-primary);
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1);
   outline: none;
 }
 
-/* 页面容器样式 */
+.input:hover,
+.select:hover,
+.textarea:hover {
+  border-color: var(--jiuwen-primary);
+}
+
+/* 页面容器样式 - 简洁背景 */
 .page-container {
   position: relative;
   min-height: 100vh;
+  background: var(--jiuwen-bg-base);
 }
 
-.page-container::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* 标题样式增强 */
+/* 标题样式 - 简洁清晰 */
 h1, h2, h3 {
-  background: var(--jiuwen-gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  color: var(--jiuwen-text-primary);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
 }
 
-/* 排除主页标题，完全不使用渐变，使用纯色 */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* 主页标题样式 */
 .heroProjectTagline,
 .heroProjectTagline h1,
-.heroProjectTagline *,
-.heroTitleTextHtml,
-.heroTitleTextHtml * {
+.heroTitleTextHtml {
   background: none !important;
   background-image: none !important;
   -webkit-background-clip: unset !important;
   -webkit-text-fill-color: unset !important;
   background-clip: unset !important;
-}
-
-.heroProjectTagline,
-.heroProjectTagline h1,
-.heroTitleTextHtml {
   color: var(--jiuwen-hero-title-color) !important;
 }
 
 html[data-theme='dark'] h1,
 html[data-theme='dark'] h2,
 html[data-theme='dark'] h3 {
-  background: var(--jiuwen-gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-html[data-theme='dark'] .heroProjectTagline,
-html[data-theme='dark'] .heroProjectTagline h1,
-html[data-theme='dark'] .heroProjectTagline *,
-html[data-theme='dark'] .heroTitleTextHtml,
-html[data-theme='dark'] .heroTitleTextHtml * {
-  background: none !important;
-  background-image: none !important;
-  -webkit-background-clip: unset !important;
-  -webkit-text-fill-color: unset !important;
-  background-clip: unset !important;
+  color: var(--jiuwen-text-primary);
 }
 
 html[data-theme='dark'] .heroProjectTagline,
 html[data-theme='dark'] .heroProjectTagline h1,
 html[data-theme='dark'] .heroTitleTextHtml {
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
   color: var(--jiuwen-hero-title-color) !important;
 }
 
@@ -229,25 +266,25 @@ html[data-theme='dark'] .heroTitleTextHtml {
   box-shadow: var(--jiuwen-shadow-sm);
 }
 
-/* 表格样式增强 */
+/* 表格样式 - 简洁风格 */
 .table {
   border-radius: var(--jiuwen-border-radius);
   overflow: hidden;
-  box-shadow: var(--jiuwen-shadow-sm);
+  border: 1px solid var(--jiuwen-border-color);
 }
 
 .table thead {
-  background: var(--jiuwen-gradient-primary);
-  color: white;
+  background: var(--jiuwen-bg-secondary);
+  color: var(--jiuwen-text-primary);
 }
 
 .table tbody tr {
   transition: var(--jiuwen-transition);
+  border-bottom: 1px solid var(--jiuwen-border-color);
 }
 
 .table tbody tr:hover {
-  background: var(--ifm-color-emphasis-100);
-  transform: scale(1.01);
+  background: var(--jiuwen-bg-secondary);
 }
 
 /* 动画效果 */
@@ -275,18 +312,17 @@ html[data-theme='dark'] .heroTitleTextHtml {
   animation: fadeInUp 0.6s ease-out;
 }
 
-/* 渐变背景卡片 */
-.gradient-card {
-  background: var(--jiuwen-gradient-primary);
+/* 强调卡片 */
+.highlight-card {
+  background: var(--jiuwen-primary);
   color: white;
   border: none;
   box-shadow: var(--jiuwen-shadow-lg);
 }
 
-.gradient-card h2,
-.gradient-card h3 {
+.highlight-card h2,
+.highlight-card h3 {
   color: white;
-  -webkit-text-fill-color: white;
 }
 
 /* 响应式优化 */

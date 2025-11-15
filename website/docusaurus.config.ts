@@ -164,7 +164,7 @@ const showLastUpdate = process.env.DOCUSAURUS_CURRENT_LOCALE === defaultLocale;
 
 export default async function createConfigAsync() {
   return {
-    title: 'JiuWen',
+    title: 'Jiuwen',
     tagline: getLocalizedConfigValue('tagline'),
     organizationName: 'facebook',
     projectName: 'jiuwen',
@@ -278,7 +278,7 @@ export default async function createConfigAsync() {
       crashTest,
       isDeployPreview,
       description:
-        'An optimized site generator in React. JiuWen helps you to move fast and write content. Build documentation websites, blogs, marketing pages, and more.',
+        '下一代AI智能体开发平台。Jiuwen 为开发者提供强大、易用、高效的AI应用开发工具和解决方案。',
       announcedVersion,
     },
     staticDirectories: [
@@ -327,7 +327,7 @@ export default async function createConfigAsync() {
       [
         './src/plugins/changelog/index.ts',
         {
-          blogTitle: 'JiuWen changelog',
+          blogTitle: 'Jiuwen changelog',
           // Not useful, but permits to run git commands earlier
           // Otherwise the sitemap plugin will run them in postBuild()
           showLastUpdateAuthor: showLastUpdate,
@@ -343,7 +343,7 @@ export default async function createConfigAsync() {
           authorsMapPath: 'authors.json',
           feedOptions: {
             type: 'all',
-            title: 'JiuWen changelog',
+            title: 'Jiuwen changelog',
             description:
               'Keep yourself up-to-date about new features in every release',
             copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
@@ -454,7 +454,7 @@ export default async function createConfigAsync() {
             {
               tagName: 'link',
               rel: 'apple-touch-icon',
-              href: 'img/jiuwen-logo-small.svg',
+              href: 'img/jiuwen-logo-180.svg',
             },
             {
               tagName: 'link',
@@ -465,7 +465,7 @@ export default async function createConfigAsync() {
             {
               tagName: 'meta',
               name: 'msapplication-TileImage',
-              content: 'img/jiuwen-logo-small.svg',
+              content: 'img/jiuwen-logo-180.svg',
             },
             {
               tagName: 'meta',
@@ -549,12 +549,12 @@ export default async function createConfigAsync() {
             feedOptions: {
               type: 'all',
               description:
-                'Keep up to date with upcoming JiuWen releases and articles by following our feed!',
+                'Keep up to date with upcoming Jiuwen releases and articles by following our feed!',
               copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
               xslt: true,
             },
-            blogTitle: 'JiuWen blog',
-            blogDescription: 'Read blog posts about JiuWen from the team',
+            blogTitle: 'Jiuwen blog',
+            blogDescription: 'Read blog posts about Jiuwen from the team',
             blogSidebarCount: 'ALL',
             blogSidebarTitle: 'All our posts',
             onUntruncatedBlogPosts:
@@ -624,7 +624,7 @@ export default async function createConfigAsync() {
       },
       // announcementBar: {
       //   id: `announcementBar-v${announcedVersion}`,
-      //   content: `🎉️ <b><a target="_blank" href="https://docusaurus.io/blog/releases/${announcedVersion}">JiuWen v${announcedVersion}</a> is out!</b> 🥳️`,
+      //   content: `🎉️ <b><a target="_blank" href="https://docusaurus.io/blog/releases/${announcedVersion}">Jiuwen v${announcedVersion}</a> is out!</b> 🥳️`,
       // },
       prism: {
         additionalLanguages: [
@@ -684,9 +684,9 @@ export default async function createConfigAsync() {
       },
       navbar: {
         hideOnScroll: true,
-        title: 'JiuWen',
+        title: 'Jiuwen',
         logo: {
-          alt: 'JiuWen Logo',
+          alt: 'Jiuwen Logo',
           src: 'img/jiuwen-logo-small.svg',
           srcDark: 'img/jiuwen-logo-small.svg',
           width: 32,
@@ -851,11 +851,11 @@ export default async function createConfigAsync() {
           },
         ],
         logo: {
-          alt: 'JiuWen Logo',
+          alt: 'Jiuwen Logo',
           src: '/img/jiuwen-logo-small.svg',
           href: '/',
         },
-        copyright: `Copyright © ${new Date().getFullYear()} JiuWen Platform. 京ICP备XXXXXXXX号-1 | Built with JiuWen.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Jiuwen Platform. 京ICP备XXXXXXXX号-1 | Built with Jiuwen.`,
       },
     } satisfies Preset.ThemeConfig,
   } satisfies Config;
