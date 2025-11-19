@@ -25,6 +25,12 @@ import Features, {type FeatureItem} from '@site/src/data/features';
 import Heading from '@theme/Heading';
 
 import styles from './styles.module.css';
+import VideoBox from '@site/src/css/videobox.module.css'
+import CommunityBox from '@site/src/css/community.module.css'
+import SolutionsBox from '@site/src/css/solutions.module.css'
+import JoinBox from '@site/src/css/join.module.css'
+import PartnersBox from '@site/src/css/partner.module.css'
+import ContactBox from '@site/src/css/contact.module.css'
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 function HeroBanner() {
@@ -74,36 +80,384 @@ function HeroBanner() {
   );
 }
 
-// 项目介绍区块 - 简洁风格
+// openJiuwen项目介绍区块
 function ProjectIntroSection() {
+  const videoUrl = 'https://openharmony-official-website.obs.cn-north-4.myhuaweicloud.com/testing/oh_webiste/video/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E5%AE%A3%E4%BC%A0%E7%89%872025_0616final.mp4';
+  
   return (
-    <div className={clsx(styles.section, 'jiuwen-intro-section')}>
+    <div className={clsx(VideoBox.openjiuwenIntroSection, 'openjiuwen-intro-section')}>
+      {/* 主内容区域 */}
       <div className="container">
-        <div className="row">
-          <div className="col col--10 col--offset-1">
-            <Heading as="h2" className={clsx('margin-bottom--lg', 'text--center')}>
-              <Translate>关于九问</Translate>
-            </Heading>
-            <div className="text--center padding-horiz--md">
-              <p className={styles.introText}>
+        {/* 开启openJiuwen之旅 */}
+        <div className={VideoBox.introTitle}>
+          <Heading as="h2" className={VideoBox.title}> 
+            <Translate>开启openJiuwen之旅</Translate>
+          </Heading>
+        </div>
+
+        <div className={VideoBox.mainBox}>
+          <div className={VideoBox.contentWrapper}>
+            {/* 上方内容 */}
+            <div className={VideoBox.topContent}>
+              <Heading as="h1" className={VideoBox.title}> 
+                <Translate>openJiuwen项目简介</Translate>
+              </Heading>
+              <div className={VideoBox.description}>
                 <Translate>
-                  九问（openJiuwen）致力于打造下一代AI智能体开发平台，为开发者提供强大、易用、高效的AI应用开发工具和解决方案。
-                  我们提供完整的开发框架、丰富的API接口、完善的文档和活跃的社区支持，帮助开发者快速构建和部署大模型应用。
+                openJiuwen作为开源大语言模型应用开发框架，致力于提供灵活、强大且易用的
+                AI Agent开发与运行能力。基于该框架，开发者可以快速构建处理各类简单或复杂任务
+                的AI Agent，实现多Agent协同交互，高效开发生产级可靠AI Agent；并助力企业
+                与个人快速搭建AI Agent系统或平台，推动商用级Agentic AI技术广泛应用与落地。
                 </Translate>
-              </p>
-              <div className="margin-top--xl">
-                <Link className="button button--primary button--lg" to="/docs-page">
-                  <Translate>查看文档</Translate>
-                </Link>
-                <Link className="button button--secondary button--lg margin-left--sm" to="/community">
-                  <Translate>加入社区</Translate>
-                </Link>
               </div>
+              <button type="button" className={VideoBox.moreBtn}>
+                <span><Translate>了解更多</Translate></span>
+              </button>
+            </div>
+            
+            {/* 下方视频区域 */}
+            <div className={VideoBox.videoContainer}>
+              <div className={VideoBox.videoPlaceholder}>
+                <div className={VideoBox.videoThumbnail} style={{ backgroundColor: 'black', height: '450px' }}></div>
+                <div className={VideoBox.playIcon} />
+              </div>
+              <video src={videoUrl} className={VideoBox.videoPlayer} controls>
+                <track kind="captions" srcLang="zh-CN" label="中文字幕" />
+              </video>
+            </div>
+          </div>
+        </div>
+        
+        {/* 功能盒子区域 */}
+        <div className={VideoBox.boxesContainer}>
+          {/* 下载盒子 */}
+          <div className={VideoBox.box}>
+            <div className={VideoBox.boxContent}>
+              <div className={VideoBox.imageWrapper}>
+                <img 
+                  src="/img/svgs/downloading.svg" 
+                  alt="下载" 
+                  className="box-image"
+                />
+              </div>
+              <Heading as="h3" className={VideoBox.boxTitle}>
+                <Translate>下载</Translate>
+              </Heading>
+              <p className={VideoBox.boxDescription}>
+                <Translate>开启openJiuwen开发之旅</Translate>
+              </p>
+            </div>
+          </div>
+          
+          {/* 体验盒子 */}
+          <div className={VideoBox.box}>
+            <div className={VideoBox.boxContent}>
+              <div className={VideoBox.imageWrapper}>
+                <img 
+                  src="/img/svgs/experience.svg" 
+                  alt="体验" 
+                  className="box-image"
+                />
+              </div>
+              <Heading as="h3" className={VideoBox.boxTitle}>
+                <Translate>体验</Translate>
+              </Heading>
+              <p className={VideoBox.boxDescription}>
+                <Translate>体验openJiuwen开发乐趣</Translate>
+              </p>
+            </div>
+          </div>
+
+          {/* 文档盒子 */}
+          <div className={VideoBox.box}>
+            <div className={VideoBox.boxContent}>
+              <div className={VideoBox.imageWrapper}>
+                <img 
+                  src="/img/svgs/documents.svg" 
+                  alt="文档" 
+                  className="box-image"
+                />
+              </div>
+              <Heading as="h3" className={VideoBox.boxTitle}>
+                <Translate>文档</Translate>
+              </Heading>
+              <p className={VideoBox.boxDescription}>
+                <Translate>查看openJiuwen文档</Translate>
+              </p>
+            </div>
+          </div>
+          
+          {/* 社区盒子 */}
+          <div className={VideoBox.box}>
+            <div className={VideoBox.boxContent}>
+              <div className={VideoBox.imageWrapper}>
+                <img 
+                  src="/img/svgs/community.svg" 
+                  alt="社区" 
+                  className="box-image"
+                />
+              </div>
+              <Heading as="h3" className={VideoBox.boxTitle}>
+                <Translate>社区</Translate>
+              </Heading>
+              <p className={VideoBox.boxDescription}>
+                <Translate>加入openJiuwen开发者社区</Translate>
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+// 社区活力数据展示组件
+function CommunityVitalitySection(): ReactNode {
+  const communityStats = [
+    { number: '722,861', text: '合并请求', englishText: 'PR' },
+    { number: '9,517', text: '代码贡献者', englishText: 'Contributor' },
+    { number: '31,405', text: '项目点赞', englishText: 'Star' },
+    { number: '126,694', text: '仓库克隆', englishText: 'Fork' },
+    { number: '70', text: '特别兴趣小组', englishText: 'Sig' },
+  ];
+
+  return (
+    <section className={CommunityBox.communityVitalitySection}>
+      <div className={CommunityBox.communityContainer}>
+        <div className={CommunityBox.communityTitle}>
+          <Heading as="h2" className={CommunityBox.title}>  
+            <Translate>社区活力</Translate>
+          </Heading>
+        </div>
+
+        <div className={CommunityBox.communityMainBox}>
+          <div className={CommunityBox.communityContentWrapper}>
+            {communityStats.map((stat, index) => (
+              <div key={index} className={CommunityBox.communityContentItem}>
+                <div className={CommunityBox.communityNumber}>{stat.number}</div>
+                <div className={CommunityBox.communityText}>
+                  <div>{stat.text}</div>
+                  <div>{stat.englishText}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className={CommunityBox.communityViewMoreResults}>
+            <span> 查看贡献详情 </span>
+            <i className="el-icon" style={{width: '24px', height: '24px', marginBottom: '2px'}}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" transform="translate(0, 1)">
+                <path fill="currentColor" d="M340.864 149.312a30.59 30.59 0 0 0 0 42.752L652.736 512 340.864 831.872a30.59 30.59 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z"></path>
+              </svg>
+            </i>
+          </div>
+        </div>
+        <div className={CommunityBox.communityCheckMore}>
+          <button className={CommunityBox.communityMoreBtn}>
+            <span> 前往SIG中心 </span>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// 解决方案展示组件
+function SolutionsSection(): ReactNode {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [solutions] = React.useState([
+    {
+      id: 1,
+      title: '物联解决方案',
+      description: '基于openJiuwen的Agent平台技术，变电站设备实现自发现、自组网并构建边缘计算能力。',
+      imageUrl: '/img/pngs/ICBC.png',
+      logoUrl: '/img/pngs/ICBC_logo.png'
+    },
+    {
+      id: 2,
+      title: '交通解决方案',
+      description: '基于openJiuwen的智能交通监控系统，实现交通流量分析、智能信号灯控制和车辆识别。',
+      imageUrl: '/img/pngs/ICBC.png',
+      logoUrl: '/img/pngs/ICBC_logo.png'
+    },
+    {
+      id: 3,
+      title: '教育解决方案',
+      description: '基于openJiuwen的智慧教育平台，提供在线教学、智能管理和个性化学习体验。',
+      imageUrl: '/img/pngs/ICBC.png',
+      logoUrl: '/img/pngs/ICBC_logo.png'
+    },
+    {
+      id: 4,
+      title: '金融解决方案',
+      description: '基于openJiuwen的AI金融安全系统，实现支付安全、身份认证和风险控制。',
+      imageUrl: '/img/pngs/ICBC.png',
+      logoUrl: '/img/pngs/ICBC_logo.png'
+    }
+  ]);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % solutions.length);
+    }, 8000);
+    return () => clearInterval(interval);
+  }, [solutions.length]);
+
+  const handleIndicatorClick = (index: number) => {
+    setActiveIndex(index);
+  };
+
+  const currentSolution = solutions[activeIndex];
+
+  return (
+    <section className={SolutionsBox.solutionsSection}>
+      <div className={SolutionsBox.backgroundBox}>
+        {solutions.map((solution, index) => (
+          <img
+            key={solution.id}
+            src={solution.imageUrl}
+            alt={`${solution.title} background`}
+            className={`${SolutionsBox.backgroundImage} ${index === activeIndex ? SolutionsBox.active : ''}`}
+          />
+        ))}
+        
+        <div className={SolutionsBox.contentOverlay}>
+          <h1 className={SolutionsBox.mainTitle}>解决方案</h1>
+          
+          <div className={SolutionsBox.contentContainer}>
+            <div className={SolutionsBox.solutionContent}>
+              <img 
+                src={currentSolution?.logoUrl || ''}
+                alt="solution logo" 
+                className={SolutionsBox.solutionLogo} 
+              />
+              <h2 className={SolutionsBox.solutionTitle}>{currentSolution?.title ?? ''}</h2>
+              <p className={SolutionsBox.solutionDesc}>
+                {currentSolution?.description?.split('\n').map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </p>
+              <button 
+                aria-disabled="false" 
+                type="button" 
+                className={SolutionsBox.solutionMoreBtn}>
+                <span> 查看案例 </span>
+              </button>
+            </div>
+          </div>
+          
+          <div className={SolutionsBox.indicatorContainer}>
+            {solutions.map((_, index) => (
+              <div
+                key={index}
+                className={`${SolutionsBox.indicatorDot} ${index === activeIndex ? SolutionsBox.active : ''}`}
+                onClick={() => handleIndicatorClick(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+          
+          <div className={SolutionsBox.solutionCheckMore}>
+            <span> 查看更多解决方案 </span>
+            <i className="el-icon" style={{width: '24px', height: '24px', marginBottom: '2px'}}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" transform="translate(0, 1)">
+                <path fill="currentColor" d="M340.864 149.312a30.59 30.59 0 0 0 0 42.752L652.736 512 340.864 831.872a30.59 30.59 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z"></path>
+              </svg>
+            </i>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// 加入社区组件
+function JoinCommunitySection() {
+  return (
+    <section className={JoinBox.joinSection}>
+      <div className="container">
+        <div className={JoinBox.joinTitle}>
+          <Heading as="h2" className={JoinBox.title}>  
+            <Translate> 加入openJiuwen开发者社区 </Translate>
+          </Heading>
+        </div>
+
+        <div className={JoinBox.joinSubtitle}>
+          <p>
+            期待更多伙伴加入，携手共建AI Agent开发新时代。
+          </p>
+        </div>
+
+        {/* 功能盒子区域 */}
+        <div className={JoinBox.boxesContainer}>
+          {/* 成为社区贡献者 */}
+          <div className={JoinBox.box}>
+            <div className={JoinBox.boxContent}>
+              <div className={JoinBox.imageWrapper}>
+                <img 
+                  src="/img/jpgs/join_coder.jpg" 
+                  alt="贡献者" 
+                  className={JoinBox.boxImage}
+                />
+              </div>
+              <Heading as="h3" className={JoinBox.boxTitle}>
+                <Translate> 成为社区贡献者 </Translate>
+              </Heading>
+              <p className={JoinBox.boxDescription}>
+                <Translate> 加入openJiuwen开发者社区，与其他开发者互动，分享知识、交换经验 </Translate>
+              </p>
+              <div className={JoinBox.joinBtnWrapper}>
+                <button className={JoinBox.joinBtn}>
+                  <Translate> 贡献攻略 </Translate>
+                </button>
+                <div className={JoinBox.joinViewMoreResults}>
+                  <span> 查看贡献详情 </span>
+                  <i className="el-icon" style={{width: '24px', height: '24px', marginBottom: '2px'}}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" transform="translate(0, 1)">
+                      <path fill="currentColor" d="M340.864 149.312a30.59 30.59 0 0 0 0 42.752L652.736 512 340.864 831.872a30.59 30.59 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z"></path>
+                    </svg>
+                  </i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 成为项目群捐赠人 */}
+          <div className={JoinBox.box}>
+            <div className={JoinBox.boxContent}>
+              <div className={JoinBox.imageWrapper}>
+                <img 
+                  src="/img/jpgs/join_donate.jpg" 
+                  alt="捐赠" 
+                  className={JoinBox.boxImage}
+                />
+              </div>
+              <Heading as="h3" className={JoinBox.boxTitle}>
+                <Translate> 成为项目群捐赠人 </Translate>
+              </Heading>
+              <p className={JoinBox.boxDescription}>
+                <Translate> 加入openJiuwen项目群，为项目贡献代码、分享经验、获得项目支持 </Translate>
+              </p>
+              <div className={JoinBox.joinBtnWrapper}>
+                <button className={JoinBox.joinBtn}>
+                  <Translate> 成员单位 </Translate>
+                </button>
+                <div className={JoinBox.joinViewMoreResults}>
+                  <span> 查看捐赠权益 </span>
+                  <i className="el-icon" style={{width: '24px', height: '24px', marginBottom: '2px'}}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" transform="translate(0, 1)">
+                      <path fill="currentColor" d="M340.864 149.312a30.59 30.59 0 0 0 0 42.752L652.736 512 340.864 831.872a30.59 30.59 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z"></path>
+                    </svg>
+                  </i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -362,10 +716,10 @@ function DeveloperCalendarSection() {
                       <div
                         key={index}
                         className={clsx(styles.calendarDay, {
-                          [styles.calendarDayOtherMonth]: !day.isCurrentMonth,
-                          [styles.calendarDayToday]: isToday,
-                          [styles.calendarDayHasEvent]: dayEvents.length > 0,
-                          [styles.calendarDaySelected]: isSelected,
+                          [`${styles.calendarDayOtherMonth}`]: !day.isCurrentMonth,
+                          [`${styles.calendarDayToday}`]: isToday,
+                          ...(dayEvents.length > 0 ? { [`${styles.calendarDayHasEvent}`]: true } : {}),
+                          [`${styles.calendarDaySelected}`]: isSelected,
                         })}
                         onClick={() => {
                           if (day.isCurrentMonth) {
@@ -432,28 +786,28 @@ function DeveloperCalendarSection() {
                 </div>
                 <div className={styles.calendarTabs}>
                   <button
-                    className={clsx(styles.calendarTab, {[styles.calendarTabActive]: activeTab === 'all'})}
+                    className={clsx(styles.calendarTab, {[styles.calendarTabActive as string]: activeTab === 'all'})}
                     onClick={() => setActiveTab('all')}
                     type="button">
                     <img src={allIconUrl} alt="全部" className={styles.calendarTabIcon} />
                     <Translate>全部</Translate>
                   </button>
                   <button
-                    className={clsx(styles.calendarTab, {[styles.calendarTabActive]: activeTab === 'meeting'})}
+                    className={clsx(styles.calendarTab, activeTab === 'meeting' && styles.calendarTabActive)}
                     onClick={() => setActiveTab('meeting')}
                     type="button">
                     <img src={meetingIconUrl} alt="会议" className={styles.calendarTabIcon} />
                     <Translate>会议</Translate>
                   </button>
                   <button
-                    className={clsx(styles.calendarTab, {[styles.calendarTabActive]: activeTab === 'activity'})}
+                    className={clsx(styles.calendarTab, {[styles.calendarTabActive as string]: activeTab === 'activity'})}
                     onClick={() => setActiveTab('activity')}
                     type="button">
                     <img src={activityIconUrl} alt="活动" className={styles.calendarTabIcon} />
                     <Translate>活动</Translate>
                   </button>
                   <button
-                    className={clsx(styles.calendarTab, {[styles.calendarTabActive]: activeTab === 'peak'})}
+                    className={clsx(styles.calendarTab, {[styles.calendarTabActive as string]: activeTab === 'peak'})}
                     onClick={() => setActiveTab('peak')}
                     type="button">
                     <img src={peakIconUrl} alt="峰会" className={styles.calendarTabIcon} />
@@ -488,7 +842,7 @@ function DeveloperCalendarSection() {
                             <div className={styles.calendarEventTitle}>{event.title}</div>
                           </div>
                           <span className={clsx(styles.calendarEventExpandIcon, {
-                            [styles.calendarEventExpandIconExpanded]: isExpanded
+                          ...(isExpanded ? { [`${styles.calendarEventExpandIconExpanded}`]: true } : {})
                           })}>
                             ▼
                           </span>
@@ -549,6 +903,79 @@ function DeveloperCalendarSection() {
   );
 }
 
+// 合作伙伴区块
+function PartnersSection() {
+  {/* 合作伙伴区块 */}
+  return (
+    <section className={PartnersBox.partnersSection}>
+      <div className={PartnersBox.partnersTitle}>
+        <Heading as="h2" className={PartnersBox.title}>  
+          <Translate> openJiuwen合作伙伴 </Translate>
+        </Heading>
+      </div>
+      <div className={PartnersBox.partnersSubtitle}>
+        <Translate> 我们的合作伙伴，帮助我们实现了更广泛的影响力和更强大的功能。 </Translate>
+      </div>
+      <div className={PartnersBox.partnersContainer}>
+        <div className={PartnersBox.partnerBox}>
+          <img src="/img/partners/ICBC.png" alt="工商银行" />
+          <div className={PartnersBox.partnerTag}>
+            <Translate> 工商银行 </Translate>
+          </div>
+        </div>
+        <div className={PartnersBox.partnerBox}>
+          <img src="/img/partners/zju.png" alt="浙江大学" />
+          <div className={PartnersBox.partnerTag}>
+            <Translate> 浙江大学 </Translate>
+          </div>
+        </div>
+        <div className={PartnersBox.partnerBox}>
+          <img src="/img/partners/rmu.png" alt="中国人民大学" />
+          <div className={PartnersBox.partnerTag}>
+            <Translate> 中国人民大学 </Translate>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// 联系方式区块
+function ContactSection() {
+  return (
+    <section className={ContactBox.contactSection}>
+      <div className={ContactBox.contactTitle}>
+        <Heading as="h2" className={ContactBox.title}>  
+          <Translate> 欢迎关注我们 </Translate>
+        </Heading>
+      </div>
+      <div className={ContactBox.contactSubtitle}>
+        <Translate> 关注openJiuwen及时获取最新资讯。 </Translate>
+      </div>
+      <div className={ContactBox.contactContainer}>
+        <div className={ContactBox.contactBox}>
+          <img src="/img/qrcodes/qrcode_1.png" alt="二维码" />
+          <div className={ContactBox.contactText}>
+            <Translate> 微信公众号 </Translate>
+          </div>
+        </div>
+        <div className={ContactBox.contactBox}>
+          <img src="/img/qrcodes/qrcode_1.png" alt="二维码" />
+          <div className={ContactBox.contactText}>
+            <Translate> 微信视频号 </Translate>
+          </div>
+        </div>
+        <div className={ContactBox.contactBox}>
+          <img src="/img/qrcodes/qrcode_1.png" alt="二维码" />
+          <div className={ContactBox.contactText}>
+            <Translate> 哔哩哔哩 </Translate>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // 新闻资讯区块
 function NewsSection() {
   return (
@@ -605,30 +1032,6 @@ function NewsSection() {
                 <Translate>查看所有动态</Translate>
               </Link>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-
-function VideoContainer() {
-  return (
-    <div className="container text--center margin-top--xl">
-      <div className="row">
-        <div className="col">
-          <Heading as="h2">
-            <Translate>Check it out in the intro video</Translate>
-          </Heading>
-          <div className="video-container">
-            <LiteYouTubeEmbed
-              id="_An9EsKPhp0"
-              params="autoplay=1&autohide=1&showinfo=0&rel=0"
-              title="Explain Like I'm 5: openJiuwen"
-              poster="maxresdefault"
-              webp
-            />
           </div>
         </div>
       </div>
@@ -834,11 +1237,12 @@ export default function Home(): ReactNode {
         {/* <AdminNavigation /> */}
         <HeroBanner />
         <ProjectIntroSection />
-        <div className={styles.section}>
-          <FeaturesContainer />
-        </div>
+        <CommunityVitalitySection />
+        <SolutionsSection />
+        <JoinCommunitySection />
         <DeveloperCalendarSection />
-        <NewsSection />
+        <PartnersSection />
+        <ContactSection />
       </main>
     </Layout>
   );

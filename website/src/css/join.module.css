@@ -1,0 +1,144 @@
+.joinSection {
+  padding: 40px 2rem;
+  background: var(--jiuwen-bg-secondary);
+}
+
+.joinTitle {
+  text-align: center;
+}
+
+.joinSubtitle {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--ifm-color-text-secondary);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--ifm-color-text-primary);
+}
+
+.boxesContainer {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.box {
+  background-color: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  padding: 24px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  height: 100%;
+  width: 100%;
+  max-width: 532px;
+}
+
+.boxContent {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.boxImage {
+  width: 100%;
+  border-radius: 8px;
+  height: auto;
+  max-height: 270px;
+  max-width: 500px;
+  aspect-ratio: 500 / 270;
+  object-fit: cover;
+}
+
+.boxTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--ifm-color-text-primary);
+}
+
+.boxDescription {
+  color: var(--ifm-color-text-secondary);
+  font-size: 0.9375rem;
+}
+
+.joinBtnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.joinBtn {
+  background-color: var(--jiuwen-primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 12;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);    
+}
+
+.joinBtn:hover {
+  background-color: var(--jiuwen-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.joinViewMoreResults {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9375rem;
+  color: var(--ifm-color-text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.joinViewMoreResults:hover {
+  color: var(--jiuwen-primary);
+}
+
+@media (max-width: 768px) {
+  .boxesContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .joinBtn {
+    font-size: 0.875rem;
+  }
+
+  .joinViewMoreResults {
+    font-size: 0.82rem;
+  }
+
+  .boxTitle {
+    font-size: 1.125rem;
+  }
+  
+  .boxDescription {
+    font-size: 0.875rem;
+  }
+}

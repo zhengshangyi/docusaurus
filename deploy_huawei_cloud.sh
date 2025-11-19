@@ -86,18 +86,18 @@ sudo rm -rf "$BUILD_DIR" 2>/dev/null || rm -rf "$BUILD_DIR" 2>/dev/null || true
 # 这样可以避免同时加载所有语言的内容到内存中
 
 # 先构建英文版本
-echo ""
-echo "=========================================="
-echo "构建英文版本 (en)..."
-echo "=========================================="
-NODE_OPTIONS="--max_old_space_size=$NODE_MEM_LIMIT" BUILD_FAST=true yarn build --locale en || {
-    echo "❌ 英文版本构建失败"
-    exit 1
-}
+# echo ""
+# echo "=========================================="
+# echo "构建英文版本 (en)..."
+# echo "=========================================="
+# NODE_OPTIONS="--max_old_space_size=$NODE_MEM_LIMIT" BUILD_FAST=true yarn build --locale en || {
+#     echo "❌ 英文版本构建失败"
+#     exit 1
+# }
 
-# 清理中间缓存（释放内存）
-echo "清理中间缓存..."
-rm -rf .docusaurus/cache 2>/dev/null || true
+# # 清理中间缓存（释放内存）
+# echo "清理中间缓存..."
+# rm -rf .docusaurus/cache 2>/dev/null || true
 
 # 再构建中文版本（会合并到同一个 build 目录）
 echo ""

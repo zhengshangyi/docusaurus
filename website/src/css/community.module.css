@@ -1,0 +1,150 @@
+/* 社区活力部分样式 */
+.communityVitalitySection {
+  padding: 40px 0;
+  background-color: var(--jiuwen-bg-base);
+}
+
+.communityContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.communityTitle {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--ifm-color-text-primary);
+}
+
+.communityMainBox {
+  background-image: url('/img/jpgs/cmu_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+.communityContentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.communityContentItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 120px;
+}
+
+.communityNumber {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--jiuwen-primary);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.communityText {
+  color: black;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.communityViewMoreResults {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--jiuwen-primary);
+  transition: color 0.2s;
+}
+
+.communityViewMoreResults:hover {
+  color: var(--jiuwen-primary-hover);
+}
+
+.communityViewMoreResults .title {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.communityCheckMore {
+  text-align: center;
+}
+
+.communityMoreBtn {
+  background-color: var(--jiuwen-primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.communityMoreBtn:hover {
+  background-color: var(--jiuwen-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 响应式设计 */
+@media only screen and (max-width: 996px) {
+  .communityContentWrapper {
+    gap: 20px;
+  }
+  
+  .communityContentItem {
+    min-width: 100px;
+  }
+  
+  .communityNumber {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .communityMainBox {
+    padding: 30px 20px;
+  }
+  
+  .communityContentWrapper {
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .communityContentItem {
+    min-width: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--jiuwen-border-color);
+  }
+  
+  .communityContentItem:last-child {
+    border-bottom: none;
+  }
+  
+  .communityNumber {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+  }
+}

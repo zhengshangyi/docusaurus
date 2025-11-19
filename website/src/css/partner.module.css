@@ -1,0 +1,117 @@
+.partnersSection {
+  padding: 40px 2rem;
+  place-items: center;
+  align-items: center;
+  justify-content: center;
+  background: var(--jiuwen-bg-secondary);
+}
+
+.partnersTitle {
+  text-align: center;
+}
+
+.partnersSubtitle {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--jiuwen-text-primary);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.partnersContainer {
+  display: grid;
+  place-items: center;
+  align-items: center;
+  justify-content: center;
+  max-width: 1000px;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.partnerBox {
+  background-color: var(--jiuwen-bg-base);
+  border-radius: 8px;
+  padding: 24px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 150px;
+  max-width: 300px;
+  height: 150px;
+  width: 300px;
+  position: relative;
+}
+
+.partnerBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.partnerTag {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 8px;
+  background-color: var(--jiuwen-primary);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 10;
+}
+
+.partnerTag::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--jiuwen-primary);
+}
+
+.partnerBox:hover .partnerTag {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+@media (max-width: 1024px) {
+  .partnersContainer {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 768px) {
+  .partnersContainer {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 650px;
+  }
+
+  .partnerBox {
+    max-height: 100px;
+    max-width: 200px;
+    height: 100px;
+    width: 200px;
+  }
+}
+
+@media (max-width: 720px) {
+  .partnersContainer {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 430px;
+  }
+}
+
+@media (max-width: 480px) {
+  .partnersContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
