@@ -77,6 +77,78 @@
   border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
+.versionLabel {
+  margin-right: 0.5rem;
+  white-space: nowrap;
+}
+
+.versionDate {
+  margin-left: auto;
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.docsList {
+  margin-top: 2rem;
+}
+
+.docsTree {
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--jiuwen-border-radius);
+  padding: 1rem;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.docItem {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  margin: 0.25rem 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+}
+
+.docItem:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.docDirectory {
+  font-weight: 500;
+}
+
+.docFile {
+  font-weight: 400;
+}
+
+.docIcon {
+  display: inline-block;
+  width: 1.2rem;
+  margin-right: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.docIconExpanded {
+  transform: rotate(0deg);
+}
+
+.docTitle {
+  flex: 1;
+}
+
+.docChildren {
+  margin-left: 1.5rem;
+  border-left: 1px solid var(--ifm-color-emphasis-200);
+  padding-left: 0.5rem;
+}
+
 .wikiContent {
   margin-top: 1.5rem;
 }

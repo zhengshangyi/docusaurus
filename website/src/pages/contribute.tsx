@@ -16,7 +16,7 @@ export default function Contribute(): ReactNode {
   return (
     <Layout
       title="贡献"
-      description="了解如何为九问平台做出贡献">
+      description="了解如何为openJiuwen平台做出贡献">
       <main className="container margin-vert--lg">
         <Breadcrumbs items={[{label: '贡献'}]} />
         <Heading as="h1">
@@ -26,7 +26,7 @@ export default function Contribute(): ReactNode {
         <div className="margin-top--lg">
           <p className="text--lg">
             <Translate>
-              感谢您对九问平台的关注！我们欢迎各种形式的贡献，包括但不限于：
+              感谢您对openJiuwen平台的关注！我们欢迎各种形式的贡献，包括但不限于：
             </Translate>
           </p>
         </div>
@@ -44,8 +44,8 @@ export default function Contribute(): ReactNode {
                       提交 Bug 修复、新功能或性能优化。请先 Fork 项目，创建分支，提交 Pull Request。
                     </Translate>
                   </p>
-                  <Link className="button button--primary" to="https://github.com/jiuwen" target="_blank">
-                    <Translate>查看 GitHub</Translate>
+                  <Link className="button button--primary button--lg jiuwen-btn-primary" to="https://gitee.com/testmyai/test-agentcore" target="_blank" rel="noopener noreferrer">
+                    <Translate>查看 Gitee</Translate>
                   </Link>
                 </div>
               </div>
@@ -58,10 +58,10 @@ export default function Contribute(): ReactNode {
                 <div className="card__body">
                   <p>
                     <Translate>
-                      发现 Bug 或有改进建议？请在 GitHub Issues 中报告，帮助我们改进项目。
+                      发现 Bug 或有改进建议？请在 Gitee Issues 中报告，帮助我们改进项目。
                     </Translate>
                   </p>
-                  <Link className="button button--primary" to="https://github.com/jiuwen/issues" target="_blank">
+                  <Link className="button button--primary button--lg jiuwen-btn-primary" to="https://gitee.com/testmyai/test-agentcore/issues" target="_blank" rel="noopener noreferrer">
                     <Translate>提交 Issue</Translate>
                   </Link>
                 </div>
@@ -78,7 +78,7 @@ export default function Contribute(): ReactNode {
                       在社区中回答问题、分享经验、帮助其他开发者，让社区更加活跃。
                     </Translate>
                   </p>
-                  <Link className="button button--primary" to="/community">
+                  <Link className="button button--primary button--lg jiuwen-btn-primary" to="/community">
                     <Translate>加入社区</Translate>
                   </Link>
                 </div>

@@ -6,70 +6,104 @@
  */
 
 import type {ReactNode} from 'react';
+import {useState, useEffect} from 'react';
+import {useLocation} from '@docusaurus/router';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import Translate from '@docusaurus/Translate';
 import Breadcrumbs from '@site/src/components/Breadcrumbs';
+import Link from '@docusaurus/Link';
+import {docsVersionsApi, type DocContentResponse} from '@site/src/utils/api';
 
 export default function DocsContent(): ReactNode {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const version = params.get('version') || '';
+  const path = params.get('path') || '';
+  
+  const [docContent, setDocContent] = useState<DocContentResponse | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!version || !path) {
+      setError('缺少版本或路径参数');
+      return;
+    }
+
+    const loadDocContent = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const content = await docsVersionsApi.getDocContent(version, path);
+        setDocContent(content);
+      } catch (err) {
+        console.error('加载文档内容失败:', err);
+        setError(err instanceof Error ? err.message : '加载文档内容失败，请稍后重试');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadDocContent();
+  }, [version, path]);
+
   return (
     <Layout
-      title="文档"
+      title={docContent?.title || '文档'}
       description="九问项目文档">
       <main className="container margin-vert--lg">
-        <Breadcrumbs items={[{label: '文档', to: '/docs-page'}, {label: '文档内容'}]} />
-        <Heading as="h1" className="margin-bottom--lg">
-          <Translate>文档</Translate>
-        </Heading>
-
-        <div className="card margin-top--md">
-          <div className="card__body">
-            <Heading as="h2" className="margin-bottom--md">
-              <Translate>欢迎使用九问文档</Translate>
-            </Heading>
-            
-            <p className="margin-bottom--md">
-              <Translate>
-                这里是九问项目的文档中心，您可以在这里找到详细的文档说明。
-              </Translate>
-            </p>
-
-            <div className="margin-top--lg">
-              <Heading as="h3" className="margin-bottom--sm">
-                <Translate>快速开始</Translate>
+        <Breadcrumbs items={[
+          {label: '文档', to: '/docs-page'}, 
+          {label: docContent?.title || '文档内容'}
+        ]} />
+        
+        {loading ? (
+          <div className="text--center padding-vert--xl">
+            <p><Translate>加载中...</Translate></p>
+          </div>
+        ) : error ? (
+          <div className="alert alert--danger">
+            <h4><Translate>加载失败</Translate></h4>
+            <p>{error}</p>
+            <Link to="/docs-page" className="button button--primary">
+              <Translate>返回文档列表</Translate>
+            </Link>
+          </div>
+        ) : docContent ? (
+          <div className="card margin-top--md">
+            <div className="card__body">
+              <div className="margin-bottom--lg">
+                <Link to="/docs-page" className="button button--outline button--sm">
+                  ← <Translate>返回文档列表</Translate>
+                </Link>
+              </div>
+              
+              <Heading as="h1" className="margin-bottom--lg">
+                {docContent.title}
               </Heading>
-              <p className="text--muted">
-                <Translate>
-                  快速开始内容将在此处显示...
-                </Translate>
-              </p>
-            </div>
-
-            <div className="margin-top--lg">
-              <Heading as="h3" className="margin-bottom--sm">
-                <Translate>API 参考</Translate>
-              </Heading>
-              <p className="text--muted">
-                <Translate>
-                  API 参考文档将在此处显示...
-                </Translate>
-              </p>
-            </div>
-
-            <div className="margin-top--lg">
-              <Heading as="h3" className="margin-bottom--sm">
-                <Translate>使用指南</Translate>
-              </Heading>
-              <p className="text--muted">
-                <Translate>
-                  使用指南内容将在此处显示...
-                </Translate>
-              </p>
+              
+              <div className="margin-bottom--md text--sm text--muted">
+                <span><Translate>版本：</Translate> {docContent.version}</span>
+                <span className="margin-left--md"><Translate>路径：</Translate> {docContent.path}</span>
+              </div>
+              
+              <div 
+                className="markdown margin-top--lg"
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{__html: docContent.content}}
+              />
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="alert alert--warning">
+            <p><Translate>未找到文档内容</Translate></p>
+            <Link to="/docs-page" className="button button--primary">
+              <Translate>返回文档列表</Translate>
+            </Link>
+          </div>
+        )}
       </main>
     </Layout>
   );
 }
-

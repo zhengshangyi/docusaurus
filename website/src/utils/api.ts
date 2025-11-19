@@ -499,4 +499,62 @@ export function removeAuthToken(): void {
   }
 }
 
+// 文档版本相关类型
+export interface DocVersion {
+  name: string; // 版本名称，如 "1.0.4"
+  label: string; // 显示标签，如 "1.0.4 LTS"
+  release_date?: string; // 发布日期
+  type?: string; // 版本类型，如 "LTS", "STS"
+}
+
+export interface DocItem {
+  title: string; // 文档标题
+  path: string; // 文档路径（相对于文档中心目录）
+  type: string; // 类型：file 或 directory
+  children?: DocItem[]; // 子项（仅目录类型有）
+}
+
+export interface DocVersionsResponse {
+  versions: DocVersion[];
+  current?: string; // 当前默认版本
+}
+
+export interface DocVersionDetailResponse {
+  version: DocVersion;
+  docs: DocItem[];
+}
+
+export interface DocContentResponse {
+  version: string;
+  path: string;
+  content: string;
+  title: string;
+}
+
+/**
+ * 文档版本 API
+ */
+export const docsVersionsApi = {
+  /**
+   * 获取文档版本列表
+   */
+  getVersions: async (): Promise<DocVersionsResponse> => {
+    return apiRequest<DocVersionsResponse>('/api/docs-versions/versions');
+  },
+
+  /**
+   * 获取指定版本的文档详情
+   */
+  getVersionDetail: async (versionName: string): Promise<DocVersionDetailResponse> => {
+    return apiRequest<DocVersionDetailResponse>(`/api/docs-versions/versions/${versionName}`);
+  },
+
+  /**
+   * 获取文档内容
+   */
+  getDocContent: async (version: string, path: string): Promise<DocContentResponse> => {
+    return apiRequest<DocContentResponse>(`/api/docs-versions/doc-content?version=${encodeURIComponent(version)}&path=${encodeURIComponent(path)}`);
+  },
+};
+
 

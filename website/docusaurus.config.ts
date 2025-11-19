@@ -675,8 +675,9 @@ export default async function createConfigAsync() {
             label: '社区',
             position: 'left',
             to: '/community',
+            activeBaseRegex: '^/(community|contribute|subscribe)',
             items: [
-              {label: 'SIG中心', to: '#'},
+              {label: '邮件订阅', to: '/subscribe'},
               {label: '贡献攻略', to: '/contribute'},
               {label: 'CLA/DCO签署', to: '#'},
               {label: '开发者论坛', to: '#'},

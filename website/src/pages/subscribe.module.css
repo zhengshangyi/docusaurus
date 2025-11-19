@@ -1,0 +1,148 @@
+/**
+ * 邮件订阅页面样式
+ */
+
+.stepsList {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.stepsList li {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+  color: var(--ifm-font-color-base);
+  padding-left: 0;
+}
+
+.stepsList li:last-child {
+  margin-bottom: 0;
+}
+
+.stepsList strong {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin: 0;
+}
+
+.emailTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+.emailTable thead {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.emailTable th {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+  white-space: nowrap;
+}
+
+.emailTable td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  vertical-align: middle;
+}
+
+.emailTable tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.emailTable tbody tr:hover {
+  background-color: var(--ifm-color-emphasis-50);
+}
+
+.emailTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.emailCell {
+  min-width: 200px;
+}
+
+.emailCode {
+  background: var(--ifm-color-emphasis-100);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.briefCell {
+  min-width: 150px;
+  font-weight: 500;
+  color: var(--ifm-heading-color);
+}
+
+.descriptionCell {
+  color: var(--ifm-font-color-base);
+  line-height: 1.6;
+}
+
+.actionCell {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.noSubscribe {
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.875rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 996px) {
+  .emailTable {
+    font-size: 0.875rem;
+  }
+
+  .emailTable th,
+  .emailTable td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .emailCode {
+    font-size: 0.8125rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .briefCell {
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tableWrapper {
+    margin: 0 -1rem;
+  }
+
+  .emailTable {
+    font-size: 0.8125rem;
+  }
+
+  .emailTable th,
+  .emailTable td {
+    padding: 0.625rem 0.5rem;
+  }
+
+  .emailCell {
+    min-width: 150px;
+  }
+
+  .descriptionCell {
+    font-size: 0.8125rem;
+  }
+}
+

@@ -1,0 +1,299 @@
+/**
+ * 版本页面样式 - 参考 docs-page 的设计
+ * 左右布局：左侧版本目录，右侧版本详情
+ */
+
+.versionsPage {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--ifm-navbar-height));
+}
+
+/* 主体容器：左右布局 */
+.versionsContainer {
+  display: flex;
+  flex: 1;
+  overflow: visible;
+  max-width: 100%;
+  align-items: flex-start;
+  min-height: calc(100vh - var(--ifm-navbar-height) - 120px);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* 左侧版本目录 */
+.versionsSidebar {
+  width: 260px;
+  min-width: 200px;
+  max-width: 400px;
+  background: #f5f5f5;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: calc(100vh - var(--ifm-navbar-height) - 120px);
+  min-height: calc(100vh - var(--ifm-navbar-height) - 120px);
+  max-height: calc(100vh - var(--ifm-navbar-height) - 120px);
+  align-self: flex-start;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sidebarContent {
+  padding: 0.75rem 0;
+}
+
+.versionsList {
+  margin: 0;
+  padding: 0;
+}
+
+.versionItem {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.versionItem:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.versionItemActive {
+  background-color: rgba(24, 144, 255, 0.08);
+  border-left-color: #1890ff;
+}
+
+.versionLabel {
+  font-size: 0.9375rem;
+  color: var(--ifm-font-color-base);
+  margin-bottom: 0.25rem;
+}
+
+.versionItemActive .versionLabel {
+  color: #1890ff;
+  font-weight: 600;
+}
+
+.versionDate {
+  font-size: 0.8125rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+.versionItemActive .versionDate {
+  color: rgba(24, 144, 255, 0.8);
+}
+
+html[data-theme='dark'] .versionsSidebar {
+  background: #1f1f1f;
+}
+
+html[data-theme='dark'] .versionItem:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+html[data-theme='dark'] .versionItemActive {
+  background-color: rgba(24, 144, 255, 0.15);
+}
+
+/* 可拖动的分割线 */
+.splitter {
+  width: 1px;
+  background: var(--ifm-color-emphasis-300);
+  cursor: col-resize;
+  flex-shrink: 0;
+  position: relative;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.splitter:hover {
+  background: var(--ifm-color-primary);
+}
+
+.splitter::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  cursor: col-resize;
+}
+
+html[data-theme='dark'] .splitter {
+  background: #595959;
+}
+
+html[data-theme='dark'] .splitter:hover {
+  background: var(--ifm-color-primary);
+}
+
+/* 右侧版本详情 */
+.versionsMain {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--ifm-background-color);
+  height: calc(100vh - var(--ifm-navbar-height) - 120px);
+  min-height: calc(100vh - var(--ifm-navbar-height) - 120px);
+  max-height: calc(100vh - var(--ifm-navbar-height) - 120px);
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.versionsContent {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 3rem;
+}
+
+.versionDetail {
+  /* max-width 由 versionsContent 控制 */
+}
+
+.versionTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.versionMeta {
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 1.5rem;
+}
+
+.versionDescription {
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  color: var(--ifm-font-color-base);
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
+}
+
+.downloadsSection {
+  margin-bottom: 2rem;
+}
+
+.downloadsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.downloadItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: var(--ifm-color-emphasis-50);
+  border-radius: 6px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.downloadInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.downloadName {
+  font-weight: 500;
+  color: var(--ifm-font-color-base);
+  font-size: 0.9375rem;
+}
+
+.downloadSize {
+  font-size: 0.8125rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+.changelogSection {
+  margin-bottom: 2rem;
+}
+
+.changelogContent {
+  background: var(--ifm-color-emphasis-50);
+  border-radius: 6px;
+  padding: 1.5rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.changelogText {
+  margin: 0;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--ifm-font-color-base);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+}
+
+html[data-theme='dark'] .downloadItem {
+  background: #1f1f1f;
+  border-color: #434343;
+}
+
+html[data-theme='dark'] .changelogContent {
+  background: #1f1f1f;
+  border-color: #434343;
+}
+
+/* 响应式设计 */
+@media (max-width: 996px) {
+  .versionsContainer {
+    flex-direction: column;
+  }
+
+  .versionsSidebar {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: 300px;
+    border-right: none;
+    border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  }
+
+  .versionsMain {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+  }
+
+  .splitter {
+    display: none;
+  }
+
+  .versionsMain {
+    width: 100%;
+  }
+
+  .versionsContent {
+    padding: 1.5rem;
+  }
+
+  .versionTitle {
+    font-size: 1.625rem;
+  }
+}
+

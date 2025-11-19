@@ -13,8 +13,8 @@
   See css var + hsl color palette technique:
   https://blog.maximeheckel.com/posts/the-power-of-composition-with-css-variables/
    */
-  --site-primary-hue-saturation: 167 68%;
-  --site-primary-hue-saturation-light: 167 56%; /* do we really need this extra one? */
+  --site-primary-hue-saturation: 210 100%;
+  --site-primary-hue-saturation-light: 210 100%; /* do we really need this extra one? */
   --site-color-feedback-background: #f0f8ff;
   --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
   /* Use a darker color to ensure contrast, ideally we don't need important */
@@ -38,17 +38,17 @@ html[data-theme='dark'] {
  * other properties here.
  */
 [data-theme='light'] {
-  --ifm-color-primary: hsl(var(--site-primary-hue-saturation) 30%);
-  --ifm-color-primary-dark: hsl(var(--site-primary-hue-saturation) 26%);
-  --ifm-color-primary-darker: hsl(var(--site-primary-hue-saturation) 23%);
-  --ifm-color-primary-darkest: hsl(var(--site-primary-hue-saturation) 17%);
+  --ifm-color-primary: hsl(var(--site-primary-hue-saturation) 55%);
+  --ifm-color-primary-dark: hsl(var(--site-primary-hue-saturation) 50%);
+  --ifm-color-primary-darker: hsl(var(--site-primary-hue-saturation) 45%);
+  --ifm-color-primary-darkest: hsl(var(--site-primary-hue-saturation) 38%);
 
-  --ifm-color-primary-light: hsl(var(--site-primary-hue-saturation-light) 39%);
+  --ifm-color-primary-light: hsl(var(--site-primary-hue-saturation-light) 60%);
   --ifm-color-primary-lighter: hsl(
-    var(--site-primary-hue-saturation-light) 47%
+    var(--site-primary-hue-saturation-light) 65%
   );
   --ifm-color-primary-lightest: hsl(
-    var(--site-primary-hue-saturation-light) 58%
+    var(--site-primary-hue-saturation-light) 70%
   );
 }
 
@@ -57,17 +57,17 @@ html[data-theme='dark'] {
  * other properties here.
  */
 [data-theme='dark'] {
-  --ifm-color-primary: hsl(var(--site-primary-hue-saturation) 45%);
-  --ifm-color-primary-dark: hsl(var(--site-primary-hue-saturation) 41%);
-  --ifm-color-primary-darker: hsl(var(--site-primary-hue-saturation) 38%);
-  --ifm-color-primary-darkest: hsl(var(--site-primary-hue-saturation) 32%);
+  --ifm-color-primary: hsl(var(--site-primary-hue-saturation) 55%);
+  --ifm-color-primary-dark: hsl(var(--site-primary-hue-saturation) 50%);
+  --ifm-color-primary-darker: hsl(var(--site-primary-hue-saturation) 45%);
+  --ifm-color-primary-darkest: hsl(var(--site-primary-hue-saturation) 38%);
 
-  --ifm-color-primary-light: hsl(var(--site-primary-hue-saturation-light) 54%);
+  --ifm-color-primary-light: hsl(var(--site-primary-hue-saturation-light) 60%);
   --ifm-color-primary-lighter: hsl(
-    var(--site-primary-hue-saturation-light) 62%
+    var(--site-primary-hue-saturation-light) 65%
   );
   --ifm-color-primary-lightest: hsl(
-    var(--site-primary-hue-saturation-light) 73%
+    var(--site-primary-hue-saturation-light) 70%
   );
 }
 
