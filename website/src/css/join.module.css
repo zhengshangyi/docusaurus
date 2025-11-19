@@ -33,7 +33,7 @@
 }
 
 .box {
-  background-color: var(--ifm-background-surface-color);
+  background-color: var(--jiuwen-bg-base);
   border-radius: 8px;
   padding: 24px;
   transition: transform 0.3s, box-shadow 0.3s;

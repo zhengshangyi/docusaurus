@@ -30,7 +30,7 @@
 }
 
 .contactBox {
-  background-color: var(--jiuwen-bg-base);
+  background-color: var(--jiuwen-bg-secondary);
   border-radius: 8px;
   padding: 24px;
   transition: transform 0.3s, box-shadow 0.3s;
