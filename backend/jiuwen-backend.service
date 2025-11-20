@@ -1,0 +1,19 @@
+[Unit]
+Description=Jiuwen Backend API Service
+After=network.target mysql.service
+Requires=mysql.service
+
+[Service]
+Type=simple
+User=jiuwen
+WorkingDirectory=/opt/huawei/data/jiuwen/official_website/docusaurus/backend
+Environment="PATH=/usr/bin:/usr/local/bin"
+ExecStart=/usr/bin/python3 /opt/huawei/data/jiuwen/official_website/docusaurus/backend/main.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/opt/huawei/data/jiuwen/official_website/docusaurus/backend/backend.log
+StandardError=append:/opt/huawei/data/jiuwen/official_website/docusaurus/backend/backend.log
+
+[Install]
+WantedBy=multi-user.target
+
