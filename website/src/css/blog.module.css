@@ -1,0 +1,315 @@
+.blogTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--jiuwen-text-primary);
+  line-height: 1.2;
+  margin-bottom: 24px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.blogDescription {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--jiuwen-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.blogContainer {
+  background: var(--jiuwen-bg-base);
+  padding: 1rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Blog items container */
+.blogItems {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Blog item style */
+.blogItem {
+  display: flex;
+  padding: 2rem 1rem;
+  border-bottom: 1px solid var(--jiuwen-text-tertiary);
+  width: 100%; /* 确保分割线贯穿整个宽度 */
+  box-sizing: border-box; /* 确保padding不会导致宽度溢出 */
+}
+
+/* 移除最后一个blogItem的下边框，避免底部出现多余的分割线 */
+.blogItems > .blogItem:last-child {
+  border-bottom: none;
+}
+
+/* Metadata section */
+.blogItemMeta {
+  flex: 0 0 150px;
+  padding-right: 1.5rem;
+  position: relative;
+}
+
+.blogItemMetaBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--jiuwen-bg-secondary);
+  border-radius: 8px;
+  height: 100%;
+}
+
+/* Date style */
+.blogItemDate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blogItemDate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blogItemDateYearBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.blogItemDateMonth {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--jiuwen-text-primary);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.blogItemDateYear {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--jiuwen-text-primary);
+    line-height: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Date number style */
+.blogItemDateNumber {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--jiuwen-primary);
+  line-height: 1;
+  margin-right: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Date separator and text */
+.blogItemDateSeparator {
+  font-size: 2.5rem;
+  margin-right: 0.5rem;
+  transform: translateY(-2px);
+  color: var(--jiuwen-text-primary);
+  font-weight: 500;
+}
+
+/* Article content section */
+.blogItemContentBlock {
+  flex: 1;
+}
+
+.blogItemContent {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.blogItemTitleWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  flex: 1;
+}
+
+.blogItemTitleText {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-right: 1rem;
+  flex: 1;
+}
+
+.blogItemTitleText a {
+  color: var(--jiuwen-text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.blogItemTitleText a:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+}
+
+.blogItemSubWrapper {
+  font-size: 0.875rem;
+  place-self: center;
+  display: flex;
+  flex-direction: row;
+  color: var(--jiuwen-text-secondary);
+}
+
+/* Author information */
+.blogItemAuthor {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  max-width: 100%;
+}
+
+.blogItemAuthorName {
+  width: 16px;
+  height: 16px;
+  margin-right: 0.25rem;
+  vertical-align: middle;
+}
+
+.blogItemAuthorIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 0.25rem;
+  vertical-align: middle;
+}
+
+.blogSeparator {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  color: var(--jiuwen-text-secondary);
+}
+
+.blogItemView {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+.blogItemViewIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 0.25rem;
+  vertical-align: middle;
+}
+
+.blogItemViewCount {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--jiuwen-text-secondary);
+}
+
+.blogItemContent span {
+  font-size: 0.875rem;
+  color: var(--jiuwen-text-primary);
+}
+
+/* Article summary */
+.blogItemStyle {
+  font-size: 0.875rem;
+  color: var(--jiuwen-text-secondary);
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+.blogCheckMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  padding-top: 10px;
+  transition: color 0.3s ease;
+  color: var(--jiuwen-text-primary);
+  position: relative;
+  z-index: 20;
+  width: 100%;
+}
+
+.blogCheckMore:hover {
+  color: var(--jiuwen-primary-hover);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .blogItem {
+    flex-direction: column;
+  }
+  
+  .blogItemMeta {
+    flex: none;
+    padding-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .blogItemMetaBlock {
+    justify-content: flex-start;
+  }
+  
+  .blogItemDate {
+    align-items: center;
+    padding: 0.75rem;
+    width: fit-content;
+  }
+  
+  .blogItemDateNumber {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+  
+  .blogItemDateSeparator {
+    font-size: 1.5rem;
+  }
+  
+  .blogItemTitleWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .blogItemAuthor {
+    margin-top: 0.5rem;
+  }
+
+  .blogSeparator {
+    margin-top: 0.5rem;
+  }
+
+  .blogItemView {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blogItemTitleText {
+    font-size: 1.125rem;
+  }
+  
+  .blogItemDateNumber {
+    font-size: 1.5rem;
+  }
+  
+  .blogItemDateMonth,
+  .blogItemDateYear {
+    font-size: 1rem;
+  }
+
+  .blogItemSubWrapper {
+    font-size: 0.75rem;
+    flex-direction: column;
+  }
+}

@@ -58,7 +58,7 @@ export default function DocsPage(): ReactNode {
         
         if (response.versions.length > 0) {
           const currentVersion = response.versions.find(v => v.name === response.current) || response.versions[0];
-          setVersion(currentVersion);
+          setVersion(currentVersion ?? null);
         }
       } catch (err) {
         console.error('加载版本列表失败:', err);
@@ -420,7 +420,7 @@ export default function DocsPage(): ReactNode {
         <div key={item.path}>
           <div
             className={clsx(styles.docItem, styles.docDirectory, {
-              [styles.docItemSelected]: isSelected
+              [styles.docItemSelected as string]: isSelected
             })}
             style={indentStyle}>
             <img
@@ -448,7 +448,7 @@ export default function DocsPage(): ReactNode {
         <div
           key={item.path}
           className={clsx(styles.docItem, styles.docFile, {
-            [styles.docItemSelected]: isSelected
+            [styles.docItemSelected as string]: isSelected
           })}
           style={indentStyle}
           onClick={() => handleDocClick(item.path)}>

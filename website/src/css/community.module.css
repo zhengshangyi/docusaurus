@@ -1,7 +1,7 @@
 /* 社区活力部分样式 */
 .communityVitalitySection {
-  padding: 40px 0;
-  background-color: var(--jiuwen-bg-secondary);
+  padding: 40px 0 44px;
+  background-color: var(--jiuwen-bg-base);
 }
 
 .communityTitle {
@@ -13,7 +13,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 16px;
-  color: var(--ifm-color-text-primary);
+  color: var(--jiuwen-text-primary);
 }
 
 .communityMainBox {
@@ -32,7 +32,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 60px;
+  gap: 35px 60px;
   flex-wrap: wrap;
   margin-bottom: 30px;
 }
@@ -99,10 +99,20 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+@media only screen and (max-width: 1060px) {
+  .communityContentWrapper {
+    gap: 35px;
+  }
+
+  .communityNumber {
+    font-size: 2.25rem;
+  }
+}
+
 /* 响应式设计 */
 @media only screen and (max-width: 996px) {
   .communityContentWrapper {
-    gap: 40px;
+    gap: 30px;
   }
   
   .communityContentItem {
@@ -111,6 +121,16 @@
   
   .communityNumber {
     font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 815px) {
+  .communityContentWrapper {
+    gap: 25px;
+  }
+  
+  .communityContentItem {
+    min-width: 80px;
   }
 }
 

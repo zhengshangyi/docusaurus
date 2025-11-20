@@ -92,6 +92,7 @@
     "@types/jest": "^29.5.3",
     "cross-env": "^7.0.3",
     "rimraf": "^3.0.2",
-    "search-insights": "^2.8.2"
+    "search-insights": "^2.8.2",
+    "typescript": "^5.2.2"
   }
 }

@@ -52,3 +52,8 @@ website/bundler-cpu-profile.json
 website/profile.json.gz
 
 
+backend/routers/__pycache__/
+backend/backend.log
+backend/__pycache__/
+backend/routers/__pycache__/
+develop_docs_1118

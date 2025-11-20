@@ -1,7 +1,7 @@
 /* openjiuwen项目简介样式 */
 .openjiuwenIntroSection {
   background-color: var(--jiuwen-bg-secondary);
-  padding: 40px 0;
+  padding: 40px 0 44px;
 }
 
 .introTitle {
@@ -10,7 +10,7 @@
 }
 
 .mainBox {
-  background-color: var(--ifm-background-surface-color);
+  background-color: var(--jiuwen-bg-base);
   border-radius: 8px;
   padding: 40px;
   margin-bottom: 40px;
@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   gap: 40px;
-  background-color: var(--ifm-background-surface-color);
+  background-color: var(--jiuwen-bg-base);
 }
 
 /* 居中内容 */
@@ -34,13 +34,13 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 16px;
-  color: var(--ifm-color-text-primary);
+  color: var(--jiuwen-text-primary);
 }
 
 .description {
   font-size: 1.15rem;
   line-height: 1.7;
-  color: var(--ifm-color-text-secondary);
+  color: var(--jiuwen-text-secondary);
   margin-bottom: 24px;
 }
 
@@ -181,11 +181,11 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 8px;
-  color: var(--ifm-color-text-primary);
+  color: var(--jiuwen-text-primary);
 }
 
 .boxDescription {
-  color: var(--ifm-color-text-secondary);
+  color: var(--jiuwen-text-secondary);
   font-size: 1rem;
 }
 
