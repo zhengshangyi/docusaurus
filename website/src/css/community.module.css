@@ -1,13 +1,7 @@
 /* 社区活力部分样式 */
 .communityVitalitySection {
   padding: 40px 0;
-  background-color: var(--jiuwen-bg-base);
-}
-
-.communityContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 60px;
+  background-color: var(--jiuwen-bg-secondary);
 }
 
 .communityTitle {
@@ -35,10 +29,11 @@
 
 .communityContentWrapper {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
   flex-wrap: wrap;
-  gap: 30px;
   margin-bottom: 30px;
 }
 
@@ -107,7 +102,7 @@
 /* 响应式设计 */
 @media only screen and (max-width: 996px) {
   .communityContentWrapper {
-    gap: 20px;
+    gap: 40px;
   }
   
   .communityContentItem {
@@ -131,6 +126,7 @@
   
   .communityContentItem {
     min-width: auto;
+    width: 100%;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;

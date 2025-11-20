@@ -147,6 +147,18 @@ export default function DocsPage(): ReactNode {
     }
   }, [selectedDocPath]);
 
+  // 处理 HTML 内容中的图片加载错误
+  useEffect(() => {
+    if (docContent && docContent.file_type === 'html' && mainRef.current) {
+      const images = mainRef.current.querySelectorAll('img');
+      images.forEach((img) => {
+        img.onerror = () => {
+          console.error('图片加载失败:', img.src);
+        };
+      });
+    }
+  }, [docContent]);
+
   const findFirstDoc = (items: DocItem[]): DocItem | null => {
     for (const item of items) {
       if (item.type === 'file') {
@@ -158,6 +170,62 @@ export default function DocsPage(): ReactNode {
       }
     }
     return null;
+  };
+
+  // 生成面包屑路径
+  const generateBreadcrumbs = (): Array<{label: string, path?: string}> => {
+    if (!selectedDocPath || !versionDetail) {
+      return [{label: '文档'}];
+    }
+
+    const breadcrumbs: Array<{label: string, path?: string}> = [{label: '文档'}];
+    
+    // 查找当前文档在文档树中的路径
+    const findPath = (items: DocItem[], targetPath: string, currentPath: Array<{label: string, path: string}> = []): Array<{label: string, path: string}> | null => {
+      for (const item of items) {
+        // 确定要使用的路径（优先使用 file_path，如果没有则使用 path）
+        const itemPath = item.file_path || item.path;
+        const newPath = [...currentPath, {label: item.title, path: itemPath}];
+        
+        // 检查是否是目标路径（可能是文件路径或目录路径）
+        if (item.path === targetPath || item.file_path === targetPath || itemPath === targetPath) {
+          return newPath;
+        }
+        
+        // 如果是目录，递归查找
+        if (item.type === 'directory' && item.children) {
+          const found = findPath(item.children, targetPath, newPath);
+          if (found) return found;
+        }
+      }
+      return null;
+    };
+
+    const path = findPath(versionDetail.docs, selectedDocPath);
+    if (path) {
+      // 将路径添加到面包屑中
+      path.forEach((item, index) => {
+        if (index < path.length - 1) {
+          // 中间路径项，可以点击
+          breadcrumbs.push({label: item.label, path: item.path});
+        } else {
+          // 最后一项，当前文档，不添加路径（不可点击）
+          breadcrumbs.push({label: item.label});
+        }
+      });
+    } else {
+      // 如果找不到路径，至少显示当前文档名称
+      const pathParts = selectedDocPath.split('/');
+      pathParts.forEach((part, index) => {
+        if (index < pathParts.length - 1) {
+          breadcrumbs.push({label: part});
+        } else {
+          breadcrumbs.push({label: part.replace(/\.(md|html)$/, '')});
+        }
+      });
+    }
+
+    return breadcrumbs;
   };
 
   const updateUrl = (path: string) => {
@@ -323,22 +391,50 @@ export default function DocsPage(): ReactNode {
   const renderDocItem = (item: DocItem, level: number = 0): ReactNode => {
     const isDirectory = item.type === 'directory';
     const isExpanded = expandedDirs.has(item.path);
-    const isSelected = item.path === selectedDocPath;
+    const isSelected = item.path === selectedDocPath || (item.file_path && item.file_path === selectedDocPath);
     const indentStyle = {paddingLeft: `${level * 1.2}rem`};
 
     if (isDirectory) {
+      // 点击图标展开/收起目录，如果有同名文件则同时打开
+      const handleIconClick = (e: React.MouseEvent) => {
+        e.stopPropagation(); // 阻止事件冒泡
+        toggleDirectory(item.path);
+        // 如果有同名文件，同时打开该文件
+        if (item.file_path) {
+          handleDocClick(item.file_path);
+        }
+      };
+
+      const handleTitleClick = (e: React.MouseEvent) => {
+        if (item.file_path) {
+          // 如果目录有同名文件，点击标题打开文件
+          e.stopPropagation();
+          handleDocClick(item.file_path);
+        } else {
+          // 否则展开/收起目录
+          toggleDirectory(item.path);
+        }
+      };
+
       return (
         <div key={item.path}>
           <div
-            className={clsx(styles.docItem, styles.docDirectory)}
-            style={indentStyle}
-            onClick={() => toggleDirectory(item.path)}>
-            <span className={clsx(styles.docIcon, {
-              [styles.docIconExpanded]: isExpanded
-            })}>
-              {isExpanded ? '▼' : '▶'}
+            className={clsx(styles.docItem, styles.docDirectory, {
+              [styles.docItemSelected]: isSelected
+            })}
+            style={indentStyle}>
+            <img
+              src={isExpanded ? "/img/document_icon/folder-open.svg" : "/img/document_icon/folder-close.svg"}
+              alt={isExpanded ? "展开" : "收起"}
+              className={styles.folderIcon}
+              onClick={handleIconClick}
+            />
+            <span 
+              className={styles.docTitle}
+              onClick={handleTitleClick}
+              style={{ cursor: item.file_path ? 'pointer' : 'default' }}>
+              {item.title}
             </span>
-            <span className={styles.docTitle}>{item.title}</span>
           </div>
           {isExpanded && item.children && (
             <div className={styles.docChildren}>
@@ -356,6 +452,11 @@ export default function DocsPage(): ReactNode {
           })}
           style={indentStyle}
           onClick={() => handleDocClick(item.path)}>
+          <img
+            src={isSelected ? "/img/document_icon/book-open.svg" : "/img/document_icon/book.svg"}
+            alt="文档"
+            className={styles.bookIcon}
+          />
           <span className={styles.docTitle}>{item.title}</span>
         </div>
       );
@@ -407,6 +508,11 @@ export default function DocsPage(): ReactNode {
               {/* 筛选框 */}
               {!loading && versionDetail && versionDetail.docs.length > 0 && (
                 <div className={styles.filterBox}>
+                  <img 
+                    src="/img/document_icon/doc-search-two.svg" 
+                    alt="搜索" 
+                    className={styles.searchIcon}
+                  />
                   <input
                     type="text"
                     className={styles.filterInput}
@@ -467,41 +573,63 @@ export default function DocsPage(): ReactNode {
                 </div>
               ) : docContent ? (
                 <>
+                  {/* 面包屑导航 */}
+                  <div className={styles.docBreadcrumbs}>
+                    {generateBreadcrumbs().map((crumb, index, array) => (
+                      <span key={index} className={styles.breadcrumbItem}>
+                        <span className={index === array.length - 1 ? styles.breadcrumbCurrent : styles.breadcrumbText}>
+                          {crumb.label}
+                        </span>
+                        {index < array.length - 1 && (
+                          <span className={styles.breadcrumbSeparator}> / </span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
                   <div className={styles.docBody}>
-                    <ReactMarkdown 
-                      remarkPlugins={[remarkGfm]}
-                      components={{
-                        h1: ({node, ...props}) => <h1 className={styles.markdownH1} {...props} />,
-                        h2: ({node, ...props}) => <h2 className={styles.markdownH2} {...props} />,
-                        h3: ({node, ...props}) => <h3 className={styles.markdownH3} {...props} />,
-                        h4: ({node, ...props}) => <h4 className={styles.markdownH4} {...props} />,
-                        p: ({node, ...props}) => <p className={styles.markdownP} {...props} />,
-                        ul: ({node, ...props}) => <ul className={styles.markdownUl} {...props} />,
-                        ol: ({node, ...props}) => <ol className={styles.markdownOl} {...props} />,
-                        li: ({node, ...props}) => <li className={styles.markdownLi} {...props} />,
-                        code: ({node, inline, ...props}: any) => 
-                          inline ? (
-                            <code className={styles.markdownCodeInline} {...props} />
-                          ) : (
-                            <code className={styles.markdownCodeBlock} {...props} />
-                          ),
-                        pre: ({node, ...props}) => <pre className={styles.markdownPre} {...props} />,
-                        a: ({node, ...props}) => <a className={styles.markdownA} {...props} />,
-                        blockquote: ({node, ...props}) => <blockquote className={styles.markdownBlockquote} {...props} />,
-                        table: ({node, ...props}) => <div className={styles.markdownTableWrapper}><table className={styles.markdownTable} {...props} /></div>,
-                        th: ({node, ...props}) => <th className={styles.markdownTh} {...props} />,
-                        td: ({node, ...props}) => <td className={styles.markdownTd} {...props} />,
-                        hr: ({node, ...props}) => <hr className={styles.markdownHr} {...props} />,
-                        img: ({node, src, alt, ...props}: any) => {
-                          // 处理图片路径：API 路径已经是正确的相对路径，直接使用
-                          // 如果需要绝对路径，可以拼接 API_BASE_URL
-                          const imageSrc = src ? `${API_BASE_URL}${src}` : '';
-                          return <img src={imageSrc} alt={alt || ''} className={styles.markdownImg} {...props} />;
-                        },
-                      }}
-                    >
-                      {docContent.content}
-                    </ReactMarkdown>
+                    {docContent.file_type === 'html' ? (
+                      // HTML 内容：直接渲染 HTML
+                      <div 
+                        dangerouslySetInnerHTML={{ __html: docContent.content }}
+                        className={styles.htmlContent}
+                      />
+                    ) : (
+                      // Markdown 内容：使用 ReactMarkdown 渲染
+                      <ReactMarkdown 
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                          h1: ({node, ...props}) => <h1 className={styles.markdownH1} {...props} />,
+                          h2: ({node, ...props}) => <h2 className={styles.markdownH2} {...props} />,
+                          h3: ({node, ...props}) => <h3 className={styles.markdownH3} {...props} />,
+                          h4: ({node, ...props}) => <h4 className={styles.markdownH4} {...props} />,
+                          p: ({node, ...props}) => <p className={styles.markdownP} {...props} />,
+                          ul: ({node, ...props}) => <ul className={styles.markdownUl} {...props} />,
+                          ol: ({node, ...props}) => <ol className={styles.markdownOl} {...props} />,
+                          li: ({node, ...props}) => <li className={styles.markdownLi} {...props} />,
+                          code: ({node, inline, ...props}: any) => 
+                            inline ? (
+                              <code className={styles.markdownCodeInline} {...props} />
+                            ) : (
+                              <code className={styles.markdownCodeBlock} {...props} />
+                            ),
+                          pre: ({node, ...props}) => <pre className={styles.markdownPre} {...props} />,
+                          a: ({node, ...props}) => <a className={styles.markdownA} {...props} />,
+                          blockquote: ({node, ...props}) => <blockquote className={styles.markdownBlockquote} {...props} />,
+                          table: ({node, ...props}) => <div className={styles.markdownTableWrapper}><table className={styles.markdownTable} {...props} /></div>,
+                          th: ({node, ...props}) => <th className={styles.markdownTh} {...props} />,
+                          td: ({node, ...props}) => <td className={styles.markdownTd} {...props} />,
+                          hr: ({node, ...props}) => <hr className={styles.markdownHr} {...props} />,
+                          img: ({node, src, alt, ...props}: any) => {
+                            // 处理图片路径：API 路径已经是正确的相对路径，直接使用
+                            // 如果需要绝对路径，可以拼接 API_BASE_URL
+                            const imageSrc = src ? `${API_BASE_URL}${src}` : '';
+                            return <img src={imageSrc} alt={alt || ''} className={styles.markdownImg} {...props} />;
+                          },
+                        }}
+                      >
+                        {docContent.content}
+                      </ReactMarkdown>
+                    )}
                   </div>
                 </>
               ) : (

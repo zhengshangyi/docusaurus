@@ -273,7 +273,7 @@ export default async function createConfigAsync() {
       process.env.DOCUSAURUS_CURRENT_LOCALE !== defaultLocale
         ? 'warn'
         : 'throw',
-    favicon: 'img/jiuwen-logo-small.svg',
+    favicon: 'img/jiuwen_logo.png',
     customFields: {
       crashTest,
       isDeployPreview,
@@ -429,7 +429,7 @@ export default async function createConfigAsync() {
             {
               tagName: 'link',
               rel: 'icon',
-              href: 'img/jiuwen-logo-small.svg',
+              href: 'img/jiuwen_logo.png',
             },
             {
               tagName: 'link',
@@ -454,18 +454,18 @@ export default async function createConfigAsync() {
             {
               tagName: 'link',
               rel: 'apple-touch-icon',
-              href: 'img/jiuwen-logo-180.svg',
+              href: 'img/jiuwen_logo.png',
             },
             {
               tagName: 'link',
               rel: 'mask-icon',
-              href: 'img/jiuwen-logo-small.svg',
+              href: 'img/jiuwen_logo.png',
               color: 'rgb(37, 194, 160)',
             },
             {
               tagName: 'meta',
               name: 'msapplication-TileImage',
-              content: 'img/jiuwen-logo-180.svg',
+              content: 'img/jiuwen_logo.png',
             },
             {
               tagName: 'meta',
@@ -660,8 +660,8 @@ export default async function createConfigAsync() {
         title: 'openJiuwen',
         logo: {
           alt: 'openJiuwen Logo',
-          src: 'img/jiuwen-logo-small.svg',
-          srcDark: 'img/jiuwen-logo-small.svg',
+          src: 'img/jiuwen_logo.png',
+          srcDark: 'img/jiuwen_logo.png',
           width: 32,
           height: 32,
         },
@@ -828,8 +828,10 @@ export default async function createConfigAsync() {
         ],
         logo: {
           alt: 'openJiuwen Logo',
-          src: '/img/jiuwen-logo-small.svg',
+          src: '/img/jiuwen_logo.png',
           href: '/',
+          width: 60,
+          height: 60,
         },
         copyright: `Copyright © ${new Date().getFullYear()} openJiuwen Platform. 京ICP备XXXXXXXX号-1 | Built with openJiuwen.`,
       },

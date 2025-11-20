@@ -50,18 +50,18 @@ export default function VersionsPage(): ReactNode {
         // 目前使用 mock 数据
         const data: VersionInfo[] = [
           {
-            name: 'agent-studio-v1',
-            label: 'Agent Studio V1',
+            name: 'openjiuwen-v1.0',
+            label: 'openJiuwen V1.0',
             release_date: '2025-11-19',
             description: 'AgentStudio 是一个专业的AI Agent开发与管理平台，旨在为开发者和企业用户提供完整的Agent构建、训练、部署和管理解决方案。AgentStudio提供了从Agent设计到商业化应用的全链路工具和服务。',
             downloads: [
               {
-                name: 'Agent Studio V1',
+                name: 'openJiuwen V1.0',
                 url: '',
                 size: ''
               }
             ],
-            changelog: `Agent Studio V1 (2025-11-19)
+            changelog: `openJiuwen V1.0 (2025-11-19)
 
 新增功能
 - 多工作流控制

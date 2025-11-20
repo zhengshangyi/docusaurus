@@ -41,7 +41,7 @@ function HeroBanner() {
           <img
             alt={translate({message: 'openJiuwen Logo'})}
             className={styles.heroLogo}
-            src={useBaseUrl('/img/jiuwen-logo.svg')}
+            src={useBaseUrl('/img/jiuwen_logo.png')}
             width="120"
             height="120"
           />
@@ -82,7 +82,7 @@ function HeroBanner() {
 
 // openJiuwen项目介绍区块
 function ProjectIntroSection() {
-  const videoUrl = 'https://openharmony-official-website.obs.cn-north-4.myhuaweicloud.com/testing/oh_webiste/video/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E5%AE%A3%E4%BC%A0%E7%89%872025_0616final.mp4';
+  // const videoUrl = 'https://openharmony-official-website.obs.cn-north-4.myhuaweicloud.com/testing/oh_webiste/video/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99%E5%AE%A3%E4%BC%A0%E7%89%872025_0616final.mp4';
   
   return (
     <div className={clsx(VideoBox.openjiuwenIntroSection, 'openjiuwen-intro-section')}>
@@ -117,13 +117,19 @@ function ProjectIntroSection() {
             
             {/* 下方视频区域 */}
             <div className={VideoBox.videoContainer}>
-              <div className={VideoBox.videoPlaceholder}>
+              <img 
+                src={useBaseUrl('/img/video_bak.jpg')} 
+                alt="视频占位图" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
+              />
+              {/* 视频暂时注释，使用占位图 */}
+              {/* <div className={VideoBox.videoPlaceholder}>
                 <div className={VideoBox.videoThumbnail} style={{ backgroundColor: 'black', height: '450px' }}></div>
                 <div className={VideoBox.playIcon} />
               </div>
               <video src={videoUrl} className={VideoBox.videoPlayer} controls>
                 <track kind="captions" srcLang="zh-CN" label="中文字幕" />
-              </video>
+              </video> */}
             </div>
           </div>
         </div>
@@ -131,7 +137,7 @@ function ProjectIntroSection() {
         {/* 功能盒子区域 */}
         <div className={VideoBox.boxesContainer}>
           {/* 下载盒子 */}
-          <div className={VideoBox.box}>
+          <Link to="/versions-page" className={VideoBox.box} style={{textDecoration: 'none', color: 'inherit'}}>
             <div className={VideoBox.boxContent}>
               <div className={VideoBox.imageWrapper}>
                 <img 
@@ -147,7 +153,7 @@ function ProjectIntroSection() {
                 <Translate>开启openJiuwen开发之旅</Translate>
               </p>
             </div>
-          </div>
+          </Link>
           
           {/* 体验盒子 */}
           <div className={VideoBox.box}>
@@ -169,7 +175,7 @@ function ProjectIntroSection() {
           </div>
 
           {/* 文档盒子 */}
-          <div className={VideoBox.box}>
+          <Link to="/docs-page" className={VideoBox.box} style={{textDecoration: 'none', color: 'inherit'}}>
             <div className={VideoBox.boxContent}>
               <div className={VideoBox.imageWrapper}>
                 <img 
@@ -185,10 +191,10 @@ function ProjectIntroSection() {
                 <Translate>查看openJiuwen文档</Translate>
               </p>
             </div>
-          </div>
+          </Link>
           
           {/* 社区盒子 */}
-          <div className={VideoBox.box}>
+          <Link to="/community" className={VideoBox.box} style={{textDecoration: 'none', color: 'inherit'}}>
             <div className={VideoBox.boxContent}>
               <div className={VideoBox.imageWrapper}>
                 <img 
@@ -204,7 +210,7 @@ function ProjectIntroSection() {
                 <Translate>加入openJiuwen开发者社区</Translate>
               </p>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
@@ -223,7 +229,7 @@ function CommunityVitalitySection(): ReactNode {
 
   return (
     <section className={CommunityBox.communityVitalitySection}>
-      <div className={CommunityBox.communityContainer}>
+      <div className="container">
         <div className={CommunityBox.communityTitle}>
           <Heading as="h2" className={CommunityBox.title}>  
             <Translate>社区活力</Translate>
@@ -267,31 +273,17 @@ function SolutionsSection(): ReactNode {
   const [solutions] = React.useState([
     {
       id: 1,
-      title: '物联解决方案',
-      description: '基于openJiuwen的Agent平台技术，变电站设备实现自发现、自组网并构建边缘计算能力。',
+      title: '"工银智涌"：金融智能化新模式',
+      description: 'Jiuwen联合工商银行建成"工银智涌"AI技术体系，探索金融智能化新范式，推动业务服务模式从"+AI"到"AI+"的转型升级，努力为服务经济社会高质量发展注入核心动能。',
       imageUrl: '/img/pngs/ICBC.png',
       logoUrl: '/img/pngs/ICBC_logo.png'
     },
     {
       id: 2,
-      title: '交通解决方案',
-      description: '基于openJiuwen的智能交通监控系统，实现交通流量分析、智能信号灯控制和车辆识别。',
-      imageUrl: '/img/pngs/ICBC.png',
-      logoUrl: '/img/pngs/ICBC_logo.png'
-    },
-    {
-      id: 3,
-      title: '教育解决方案',
-      description: '基于openJiuwen的智慧教育平台，提供在线教学、智能管理和个性化学习体验。',
-      imageUrl: '/img/pngs/ICBC.png',
-      logoUrl: '/img/pngs/ICBC_logo.png'
-    },
-    {
-      id: 4,
-      title: '金融解决方案',
-      description: '基于openJiuwen的AI金融安全系统，实现支付安全、身份认证和风险控制。',
-      imageUrl: '/img/pngs/ICBC.png',
-      logoUrl: '/img/pngs/ICBC_logo.png'
+      title: '邮储：大型银行的大模型金融蜕变',
+      description: 'Jiuwen助力邮政储蓄银行完成"人机共生"的重要战略布局，打造"人机协同"的新范式，实现线上+线下+远程的立体化金融体验革新。',
+      imageUrl: '/img/pngs/postal.png',
+      logoUrl: '/img/pngs/postal_logo.jpeg'
     }
   ]);
 
@@ -310,62 +302,70 @@ function SolutionsSection(): ReactNode {
 
   return (
     <section className={SolutionsBox.solutionsSection}>
-      <div className={SolutionsBox.backgroundBox}>
-        {solutions.map((solution, index) => (
-          <img
-            key={solution.id}
-            src={solution.imageUrl}
-            alt={`${solution.title} background`}
-            className={`${SolutionsBox.backgroundImage} ${index === activeIndex ? SolutionsBox.active : ''}`}
-          />
-        ))}
-        
-        <div className={SolutionsBox.contentOverlay}>
-          <h1 className={SolutionsBox.mainTitle}>解决方案</h1>
+      <div className="container">
+        <div className={SolutionsBox.solutionsTitle}>
+          <Heading as="h2" className={SolutionsBox.title}>  
+            <Translate>解决方案</Translate>
+          </Heading>
+        </div>
+      </div>
+      
+      <div className="container">
+        <div className={SolutionsBox.backgroundBox}>
+          {solutions.map((solution, index) => (
+            <img
+              key={solution.id}
+              src={solution.imageUrl}
+              alt={`${solution.title} background`}
+              className={`${SolutionsBox.backgroundImage} ${index === activeIndex ? SolutionsBox.active : ''}`}
+            />
+          ))}
           
-          <div className={SolutionsBox.contentContainer}>
-            <div className={SolutionsBox.solutionContent}>
-              <img 
-                src={currentSolution?.logoUrl || ''}
-                alt="solution logo" 
-                className={SolutionsBox.solutionLogo} 
-              />
-              <h2 className={SolutionsBox.solutionTitle}>{currentSolution?.title ?? ''}</h2>
-              <p className={SolutionsBox.solutionDesc}>
-                {currentSolution?.description?.split('\n').map((line, i) => (
-                  <React.Fragment key={i}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
-              </p>
-              <button 
-                aria-disabled="false" 
-                type="button" 
-                className={SolutionsBox.solutionMoreBtn}>
-                <span> 查看案例 </span>
-              </button>
+          <div className={SolutionsBox.contentOverlay}>
+            <div className={SolutionsBox.contentContainer}>
+              <div className={SolutionsBox.solutionContent}>
+                <img 
+                  src={currentSolution?.logoUrl || ''}
+                  alt="solution logo" 
+                  className={SolutionsBox.solutionLogo} 
+                />
+                <h2 className={SolutionsBox.solutionTitle}>{currentSolution?.title ?? ''}</h2>
+                <p className={SolutionsBox.solutionDesc}>
+                  {currentSolution?.description?.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                </p>
+                <button 
+                  aria-disabled="false" 
+                  type="button" 
+                  className={SolutionsBox.solutionMoreBtn}>
+                  <span> 查看案例 </span>
+                </button>
+              </div>
             </div>
-          </div>
-          
-          <div className={SolutionsBox.indicatorContainer}>
-            {solutions.map((_, index) => (
-              <div
-                key={index}
-                className={`${SolutionsBox.indicatorDot} ${index === activeIndex ? SolutionsBox.active : ''}`}
-                onClick={() => handleIndicatorClick(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-          
-          <div className={SolutionsBox.solutionCheckMore}>
-            <span> 查看更多解决方案 </span>
-            <i className="el-icon" style={{width: '24px', height: '24px', marginBottom: '2px'}}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" transform="translate(0, 1)">
-                <path fill="currentColor" d="M340.864 149.312a30.59 30.59 0 0 0 0 42.752L652.736 512 340.864 831.872a30.59 30.59 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z"></path>
-              </svg>
-            </i>
+            
+            <div className={SolutionsBox.indicatorContainer}>
+              {solutions.map((_, index) => (
+                <div
+                  key={index}
+                  className={`${SolutionsBox.indicatorDot} ${index === activeIndex ? SolutionsBox.active : ''}`}
+                  onClick={() => handleIndicatorClick(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+            
+            <div className={SolutionsBox.solutionCheckMore}>
+              <span> 查看更多解决方案 </span>
+              <i className="el-icon" style={{width: '24px', height: '24px', marginBottom: '2px'}}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" transform="translate(0, 1)">
+                  <path fill="currentColor" d="M340.864 149.312a30.59 30.59 0 0 0 0 42.752L652.736 512 340.864 831.872a30.59 30.59 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z"></path>
+                </svg>
+              </i>
+            </div>
           </div>
         </div>
       </div>
@@ -380,7 +380,7 @@ function JoinCommunitySection() {
       <div className="container">
         <div className={JoinBox.joinTitle}>
           <Heading as="h2" className={JoinBox.title}>  
-            <Translate> 加入openJiuwen开发者社区 </Translate>
+            <Translate> 加入我们 </Translate>
           </Heading>
         </div>
 
@@ -406,7 +406,7 @@ function JoinCommunitySection() {
                 <Translate> 成为社区贡献者 </Translate>
               </Heading>
               <p className={JoinBox.boxDescription}>
-                <Translate> 加入openJiuwen开发者社区，与其他开发者互动，分享知识、交换经验 </Translate>
+                <Translate> 加入我们，与其他开发者互动，分享知识、交换经验 </Translate>
               </p>
               <div className={JoinBox.joinBtnWrapper}>
                 <button className={JoinBox.joinBtn}>
@@ -674,9 +674,11 @@ function DeveloperCalendarSection() {
       <div className="container">
         <div className="row">
           <div className="col">
-            <Heading as="h2" className={clsx('margin-bottom--lg', 'text--center')}>
-              <Translate>Jiuwen开发者日历</Translate>
-            </Heading>
+            <div style={{textAlign: 'center', marginBottom: '40px'}}>
+              <Heading as="h2" className={styles.calendarSectionTitle}>
+                <Translate>开发者日历</Translate>
+              </Heading>
+            </div>
             <div className={styles.calendarContainer}>
               <div className={styles.calendarWrapper}>
                 <div className={styles.calendarHeader}>
@@ -910,7 +912,7 @@ function PartnersSection() {
     <section className={PartnersBox.partnersSection}>
       <div className={PartnersBox.partnersTitle}>
         <Heading as="h2" className={PartnersBox.title}>  
-          <Translate> openJiuwen合作伙伴 </Translate>
+          <Translate> 合作伙伴 </Translate>
         </Heading>
       </div>
       <div className={PartnersBox.partnersSubtitle}>
@@ -933,6 +935,36 @@ function PartnersSection() {
           <img src="/img/partners/rmu.png" alt="中国人民大学" />
           <div className={PartnersBox.partnerTag}>
             <Translate> 中国人民大学 </Translate>
+          </div>
+        </div>
+        <div className={PartnersBox.partnerBox}>
+          <img src="/img/partners/cpic.png" alt="太平洋保险" />
+          <div className={PartnersBox.partnerTag}>
+            <Translate> 太平洋保险 </Translate>
+          </div>
+        </div>
+        <div className={PartnersBox.partnerBox}>
+          <img src="/img/partners/gac_group.png" alt="广汽集团" />
+          <div className={PartnersBox.partnerTag}>
+            <Translate> 广汽集团 </Translate>
+          </div>
+        </div>
+        <div className={PartnersBox.partnerBox}>
+          <img src="/img/partners/mobile.png" alt="中国移动" />
+          <div className={PartnersBox.partnerTag}>
+            <Translate> 中国移动 </Translate>
+          </div>
+        </div>
+        <div className={PartnersBox.partnerBox}>
+          <img src="/img/partners/postal.png" alt="中国邮政储蓄银行" />
+          <div className={PartnersBox.partnerTag}>
+            <Translate> 中国邮政储蓄银行 </Translate>
+          </div>
+        </div>
+        <div className={PartnersBox.partnerBox}>
+          <img src="/img/partners/southern_power.png" alt="中国南方电网" />
+          <div className={PartnersBox.partnerTag}>
+            <Translate> 中国南方电网 </Translate>
           </div>
         </div>
       </div>

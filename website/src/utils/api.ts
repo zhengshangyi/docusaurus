@@ -512,6 +512,7 @@ export interface DocItem {
   path: string; // 文档路径（相对于文档中心目录）
   type: string; // 类型：file 或 directory
   children?: DocItem[]; // 子项（仅目录类型有）
+  file_path?: string; // 如果目录有同名文件，存储文件路径（用于点击目录时打开文件）
 }
 
 export interface DocVersionsResponse {
@@ -529,6 +530,7 @@ export interface DocContentResponse {
   path: string;
   content: string;
   title: string;
+  file_type?: string; // "markdown" 或 "html"
 }
 
 /**

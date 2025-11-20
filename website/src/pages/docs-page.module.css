@@ -118,11 +118,12 @@ html[data-theme='dark'] .versionDate {
   flex: 1;
   overflow: visible;
   max-width: 100%;
-  align-items: flex-start;
+  align-items: stretch;
   min-height: calc(100vh - var(--ifm-navbar-height) - 120px);
+  height: calc(100vh - var(--ifm-navbar-height) - 120px);
 }
 
-/* 左侧文档目录 - 参考 cangjie-lang.cn 风格 */
+/* 左侧文档目录 - 参考 mindspore 风格 */
 .docsSidebar {
   width: 260px;
   min-width: 200px;
@@ -131,16 +132,23 @@ html[data-theme='dark'] .versionDate {
   overflow-y: auto;
   overflow-x: hidden;
   flex-shrink: 0;
-  position: sticky;
-  top: 0;
-  max-height: calc(100vh - var(--ifm-navbar-height) - 120px);
-  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 }
 
+html[data-theme='dark'] .docsSidebar {
+  background: #1f1f1f;
+}
+
 .sidebarContent {
   padding: 0.75rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 /* 筛选框 - 参考华为开发者文档风格 */
@@ -151,11 +159,22 @@ html[data-theme='dark'] .versionDate {
   position: sticky;
   top: 0;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.searchIcon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  opacity: 0.6;
 }
 
 .filterInput {
-  width: 100%;
+  flex: 1;
   padding: 0.5rem 0.75rem;
+  padding-left: 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   font-size: 0.8125rem;
@@ -204,6 +223,8 @@ html[data-theme='dark'] .filterInput:focus {
 .docsTree {
   margin: 0;
   padding: 0;
+  flex: 1;
+  min-height: 0;
 }
 
 .docItem {
@@ -253,19 +274,31 @@ html[data-theme='dark'] .filterInput:focus {
   background-color: rgba(37, 99, 235, 0.16);
 }
 
-.docIcon {
-  display: inline-block;
-  width: 0.875rem;
+.folderIcon {
+  width: 1rem;
+  height: 1rem;
   margin-right: 0.5rem;
-  text-align: center;
-  font-size: 0.6875rem;
-  transition: transform 0.2s ease;
   flex-shrink: 0;
-  color: var(--ifm-color-content-secondary);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  opacity: 0.7;
 }
 
-.docIconExpanded {
-  transform: rotate(90deg);
+.folderIcon:hover {
+  opacity: 1;
+}
+
+.bookIcon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.docItemSelected .bookIcon {
+  opacity: 1;
 }
 
 .docTitle {
@@ -312,10 +345,8 @@ html[data-theme='dark'] .filterInput:focus {
   overflow-y: auto;
   overflow-x: hidden;
   background: var(--ifm-background-color);
-  max-height: calc(100vh - var(--ifm-navbar-height) - 120px);
-  position: sticky;
-  top: 0;
-  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 }
@@ -324,6 +355,35 @@ html[data-theme='dark'] .filterInput:focus {
   max-width: 900px;
   margin: 0 auto;
   padding: 2.5rem 3rem;
+  flex: 1;
+}
+
+/* 面包屑导航 */
+.docBreadcrumbs {
+  padding: 1rem 0 1.5rem 0;
+  font-size: 0.875rem;
+  color: var(--ifm-color-content-secondary);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumbItem {
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumbText {
+  color: var(--ifm-color-content-secondary);
+}
+
+.breadcrumbCurrent {
+  color: var(--ifm-color-content);
+  font-weight: 500;
+}
+
+.breadcrumbSeparator {
+  margin: 0 0.5rem;
+  color: var(--ifm-color-content-secondary);
 }
 
 .docBody {

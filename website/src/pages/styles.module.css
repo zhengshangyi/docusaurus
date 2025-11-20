@@ -10,6 +10,10 @@
   background-color: transparent;
 }
 
+.jiuwen-calendar-section.section {
+  background-color: var(--jiuwen-bg-secondary);
+}
+
 .sectionAlt {
   background-color: var(--jiuwen-bg-secondary);
 }
@@ -147,6 +151,22 @@ html[data-theme='dark'] .topBannerTitleText {
   border-bottom: 1px solid var(--jiuwen-border-color);
 }
 
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, 
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
 html[data-theme='dark'] .hero {
   background: var(--jiuwen-bg-base);
   background-image: url('/img/openjiuwen_background_1.png');
@@ -156,10 +176,28 @@ html[data-theme='dark'] .hero {
   border-bottom-color: var(--jiuwen-border-color);
 }
 
+html[data-theme='dark'] .hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, 
+    rgba(20, 20, 20, 0.6) 0%,
+    rgba(20, 20, 20, 0.45) 50%,
+    rgba(20, 20, 20, 0.3) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
 .heroInner {
   margin: 0;
   max-width: 1100px;
   padding: 0 20px 0 80px;
+  position: relative;
+  z-index: 1;
 }
 
 .heroProjectTagline {
@@ -353,12 +391,19 @@ html[data-theme='dark'] .hero {
 }
 
 /* Jiuwen开发者日历样式 - 参考 MindSpore 设计 */
+.calendarSectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--ifm-color-text-primary);
+}
+
 .calendarContainer {
   display: flex;
   gap: 40px;
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  background: var(--jiuwen-bg-base);
+  background: var(--ifm-background-surface-color);
   border-radius: 12px;
   padding: 40px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -430,9 +475,13 @@ html[data-theme='dark'] .hero {
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
-  background: var(--jiuwen-bg-secondary);
+  background: rgba(245, 245, 245, 0.6);
   border: 1px solid transparent;
   padding: 8px;
+}
+
+html[data-theme='dark'] .calendarDay {
+  background: rgba(31, 31, 31, 0.6);
 }
 
 .calendarDay:hover {
@@ -448,8 +497,12 @@ html[data-theme='dark'] .hero {
 }
 
 .calendarDayOtherMonth:hover {
-  background: var(--jiuwen-bg-secondary);
+  background: rgba(245, 245, 245, 0.6);
   transform: none;
+}
+
+html[data-theme='dark'] .calendarDayOtherMonth:hover {
+  background: rgba(31, 31, 31, 0.6);
   box-shadow: none;
 }
 
@@ -501,10 +554,14 @@ html[data-theme='dark'] .hero {
 
 .calendarEvents {
   flex: 4;
-  background: var(--jiuwen-bg-secondary);
+  background: rgba(245, 245, 245, 0.6);
   border-radius: 12px;
   padding: 24px;
   min-width: 0;
+}
+
+html[data-theme='dark'] .calendarEvents {
+  background: rgba(31, 31, 31, 0.6);
 }
 
 .calendarEventsHeader {
