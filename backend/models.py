@@ -1,7 +1,8 @@
 """
 数据库模型定义
 """
-from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean
+from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, Date, ForeignKey, BigInteger, JSON
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from database import Base
 
@@ -143,4 +144,96 @@ class SiteConfig(Base):
     value = Column(Text, comment="配置值")
     description = Column(String(500), comment="配置描述")
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now(), comment="更新时间")
+
+
+# ============================================
+# 多版本文档相关模型
+# ============================================
+
+class DocVersion(Base):
+    """文档版本表"""
+    __tablename__ = "doc_versions"
+    
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    version_name = Column(String(50), unique=True, nullable=False, index=True, comment="版本名称")
+    label = Column(String(100), comment="版本显示标签")
+    is_current = Column(Boolean, default=False, comment="是否为当前版本")
+    is_latest = Column(Boolean, default=False, comment="是否为最新稳定版本")
+    description = Column(Text, comment="版本描述")
+    release_date = Column(Date, comment="发布日期")
+    status = Column(String(20), default="active", index=True, comment="状态")
+    created_at = Column(DateTime, server_default=func.now(), comment="创建时间")
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now(), comment="更新时间")
+    
+    # 关系
+    nodes = relationship("DocNode", back_populates="version", cascade="all, delete-orphan")
+    assets = relationship("DocAsset", back_populates="version", cascade="all, delete-orphan")
+
+
+class DocNode(Base):
+    """文档节点表（统一存储文档和目录）"""
+    __tablename__ = "doc_nodes"
+    
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    version_id = Column(Integer, ForeignKey("doc_versions.id", ondelete="CASCADE"), nullable=False, index=True, comment="所属版本ID")
+    parent_id = Column(Integer, ForeignKey("doc_nodes.id", ondelete="CASCADE"), index=True, comment="父节点ID")
+    node_type = Column(String(20), nullable=False, index=True, comment="节点类型（doc/category）")
+    title = Column(String(255), nullable=False, comment="标题/标签")
+    slug = Column(String(255), index=True, comment="URL友好标识")
+    file_path = Column(String(500), comment="文件路径")
+    content = Column(Text, comment="文档内容（Markdown/MDX）")
+    frontmatter = Column(JSON, comment="Frontmatter元数据")
+    description = Column(Text, comment="描述/摘要")
+    author = Column(String(100), comment="作者")
+    order = Column(Integer, default=0, index=True, comment="显示顺序")
+    sidebar_position = Column(Integer, comment="侧边栏位置")
+    is_active = Column(Boolean, default=True, comment="是否启用")
+    view_count = Column(Integer, default=0, comment="浏览次数")
+    created_at = Column(DateTime, server_default=func.now(), comment="创建时间")
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now(), comment="更新时间")
+    
+    # 关系
+    version = relationship("DocVersion", back_populates="nodes")
+    parent = relationship("DocNode", remote_side=[id], backref="children")
+    category_config = relationship("DocCategoryConfig", back_populates="node", uselist=False, cascade="all, delete-orphan")
+    assets = relationship("DocAsset", back_populates="node", cascade="all, delete-orphan")
+
+
+class DocCategoryConfig(Base):
+    """目录配置表"""
+    __tablename__ = "doc_category_config"
+    
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    node_id = Column(Integer, ForeignKey("doc_nodes.id", ondelete="CASCADE"), unique=True, nullable=False, comment="关联的目录节点ID")
+    label = Column(String(255), comment="目录显示标签")
+    position = Column(Integer, default=0, comment="目录位置")
+    collapsed = Column(Boolean, default=False, comment="是否默认折叠")
+    link_type = Column(String(20), comment="链接类型")
+    link_id = Column(String(255), comment="链接ID")
+    custom_props = Column(JSON, comment="自定义属性")
+    created_at = Column(DateTime, server_default=func.now(), comment="创建时间")
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now(), comment="更新时间")
+    
+    # 关系
+    node = relationship("DocNode", back_populates="category_config")
+
+
+class DocAsset(Base):
+    """文档资源表"""
+    __tablename__ = "doc_assets"
+    
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    version_id = Column(Integer, ForeignKey("doc_versions.id", ondelete="CASCADE"), nullable=False, index=True, comment="所属版本ID")
+    node_id = Column(Integer, ForeignKey("doc_nodes.id", ondelete="SET NULL"), index=True, comment="关联的文档节点ID")
+    asset_type = Column(String(20), nullable=False, comment="资源类型")
+    file_name = Column(String(255), nullable=False, comment="文件名")
+    file_path = Column(String(500), nullable=False, comment="文件路径")
+    file_size = Column(BigInteger, comment="文件大小（字节）")
+    mime_type = Column(String(100), comment="MIME类型")
+    url = Column(String(500), comment="访问URL")
+    created_at = Column(DateTime, server_default=func.now(), comment="创建时间")
+    
+    # 关系
+    version = relationship("DocVersion", back_populates="assets")
+    node = relationship("DocNode", back_populates="assets")
 

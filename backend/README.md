@@ -63,16 +63,37 @@ DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=your_password
-DB_NAME=jiuwen_website
+DB_NAME=jiuwen
 ```
 
 ### 3. 创建 MySQL 数据库
 
 ```sql
-CREATE DATABASE jiuwen_website CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE jiuwen CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-### 4. 运行服务
+### 4. 初始化数据库表
+
+```bash
+# 创建所有表（包括文档相关表）
+python3 init_db.py
+```
+
+### 5. 导入文档数据
+
+```bash
+# 导入文档数据到 openJiuwen V1 版本
+python3 import_docs.py
+```
+
+**导入说明：**
+- 脚本会自动清空所有现有文档数据
+- 导入两个数据源：
+  - **AgentStudio**: `/opt/huawei/data/jiuwen/test-agentstudio/docs/` (Markdown 格式)
+  - **AgentCore**: `/opt/huawei/data/jiuwen/official_website/docusaurus/develop_docs_1118` (HTML 格式)
+- 静态资源会复制到项目根目录的 `static_assets/` 文件夹下
+
+### 6. 运行服务
 
 ```bash
 # 开发模式（自动重载）
@@ -82,7 +103,7 @@ python main.py
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-### 5. 访问 API 文档
+### 7. 访问 API 文档
 
 启动服务后，访问以下地址查看 API 文档：
 
